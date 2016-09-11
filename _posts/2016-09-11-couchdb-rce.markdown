@@ -4,7 +4,7 @@ title:      "Couchdb命令执行"
 subtitle:   "一点点记录"
 date:       2016-09-11
 author:     "Urahara"
-header-img: "https://urahara3389.github.io/img/Couchdb-RCE.jpg"
+header-img: "img/Couchdb-RCE.jpg"
 header-mask: 0.3
 tags:
     - 渗透测试
