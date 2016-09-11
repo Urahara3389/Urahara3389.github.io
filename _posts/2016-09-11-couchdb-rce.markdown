@@ -1,5 +1,5 @@
 ---
-layout:     keynote
+layout:     post
 title:      "Couchdb命令执行"
 subtitle:   "一点点记录"
 iframe:     "https://Urahara3389.github.io/js-module-7day/"
