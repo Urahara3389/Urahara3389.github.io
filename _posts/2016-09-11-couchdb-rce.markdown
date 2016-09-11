@@ -12,10 +12,10 @@ tags:
 ---
 
 
-##背景介绍
+## 背景介绍
  CouchDB是一个开源的面向文档的数据库管理系统，可以通过 RESTful JavaScript Object Notation (JSON) API 访问。CouchDB 可以安装在大部分 POSIX 系统上，包括 Linux和 Mac OS X。
 
-##漏洞介绍
+## 漏洞介绍
 Couchdb默认会在5984端口开放Restful的API接口，如果使用SSL的话就会监听在6984端口，用于数据库的管理功能。其HTTP Server默认开启时没有进行验证，而且绑定在0.0.0.0，所有用户均可通过API访问导致未授权访问。
 
 使用nmap扫描可发现couchdb的banner信息
@@ -26,7 +26,7 @@ Couchdb默认会在5984端口开放Restful的API接口，如果使用SSL的话�
 CouchDB提供了一个可视化界面工具，在浏览器中运行“http://127.0.0.1:5984/_utils/”，即可见到如下所示的界面。
 ![账号认证](https://urahara3389.github.io/img/Couchdb-RCE-admin.png)
 
-##漏洞利用
+## 漏洞利用
 这里举例有账号认证的情况，我们需要使用admin身份登录然后获取cookie，再使用curl命令与api进行交互，实现数据库操作
 ![获取Cookie](https://urahara3389.github.io/img/Couchdb-RCE-cookie.png)
 
@@ -57,6 +57,7 @@ getshell，读取flag
 ![成功](https://urahara3389.github.io/img/Couchdb-RCE-over.png)
 
 
-###参考
+### 参考
 [CouchDB未授权访问导致执行任意系统命令漏洞](https://www.secpulse.com/archives/45917.html)
+
 [CouchDB未授权访问漏洞导致系统命令执行](http://blog.nsfocus.net/couchdb-unauthorized-access-vulnerability-system-command/)
