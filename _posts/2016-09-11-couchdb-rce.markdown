@@ -2,10 +2,10 @@
 layout:     post
 title:      "Couchdb命令执行"
 subtitle:   "一点点记录"
-iframe:     "https://Urahara3389.github.io/js-module-7day/"
 date:       2016-09-11
 author:     "Urahara"
 header-img: "https://urahara3389.github.io/img/Couchdb-RCE.jpg"
+header-mask: 0.3
 tags:
     - 渗透测试
     - 数据库安全
