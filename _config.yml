@@ -2,10 +2,10 @@
 title: Urahara Blog
 SEOTitle: Urahara Blog
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
-description: "关于前端与设计、黑客与画家 | 黄玄，Web & Mobile Lover，Front-End Engineer，UX Designer | 这里是 @Hux黄玄 的个人博客，与你一起发现更大的世界。"
-keyword: "黄玄, Hux黄玄, Hux, 鬼栈, huxpro, @huxpro, 黄玄的博客, Hux Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品, 肖玉, Lynn, 肖玉的男朋友"
-url: "http://huangxuan.me"              # your host, for absolute URL
+email: Urahara3389@163.com
+description: "[root@Urahara]$ ~"
+keyword: "Urahara, 黑客, 无帽子, Hacker, @Urahara, Urahara Blog, 博客, 个人网站, 网络安全, 信息安全, 渗透测试, 移动安全, 物联网安全"
+url: "http://reverse-tcp.xyz"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
@@ -15,8 +15,8 @@ RSS: false
 weibo_username:     Urahara_D
 zhihu_username:     Urahara
 github_username:    Urahara3389
-#twitter_username:  huxpro
-#facebook_username:  huxpro
+#twitter_username:  Urahara
+#facebook_username:  Urahara
 # linkedin_username:  firstname-lastname-idxxxx
 
 
@@ -60,7 +60,7 @@ duoshuo_share: true                     # set to false if you want to use Commen
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
+ba_track_id: e7e0ae5ff860b05513e4ed6ecf4f57e3
 # Google Analytics
 ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
 ga_domain: huangxuan.me
