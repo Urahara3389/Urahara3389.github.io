@@ -16,11 +16,11 @@ tags:
 **方法一** ：打开web查看源码，复制一个特征字符串，然后替换进下面命令的htmlString搜索之。
 
 - Win ：findstr /s/i/n /d:E:\code\xampp\htdocs\ /c:"htmlString" \*.\*
-- Linux：find/-name"*.*"|xargs grep"htmlString"
+- Linux：find / -name "*.*" \| xargs grep"htmlString"
 
 **方法二** ：对于linux系统，我们也可以尝试通过history命令去查找，同样的也可以去看.bash_history
 
-history | grep -E 'cd|vi|ed|nano|et|mkdir|rm|find|ls|mv'|grep -v grep | grep -E 'www|html|nginx|apache|php|lighttp|web' -i
+history \| grep -E 'cd\|vi\|ed\|nano\|et\|mkdir\|rm\|find\|ls\|mv' \|grep -v grep \| grep -E 'www|html|nginx|apache|php|lighttp|web' -i
 
 **方法三** ：windows系统中也可以使用dir去匹配一个特征文件名
 
