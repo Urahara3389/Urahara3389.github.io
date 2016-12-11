@@ -63,7 +63,7 @@ duoshuo_share: true                     # set to false if you want to use Commen
 ba_track_id: e7e0ae5ff860b05513e4ed6ecf4f57e3
 # Google Analytics
 ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: huangxuan.me
+ga_domain: reverse-tcp.xyz
 
 
 
