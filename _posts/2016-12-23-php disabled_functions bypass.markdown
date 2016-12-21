@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "php disabled_functions bypass"
+title:      "PHP Disabled_functions Bypass"
 subtitle:   "bypass"
 date:       2016-12-23
 author:     "Urahara"
