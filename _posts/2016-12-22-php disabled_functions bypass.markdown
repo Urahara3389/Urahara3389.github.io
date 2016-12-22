@@ -265,7 +265,7 @@ echo file_get_contents($data_file);
 
 获取php版本号，并下载下载相同或相近版本的php源码包
 
-```
+```bash
 tar zxvf php-5.3.10.tar.gz  //解压缩
 cd php-5.3.10/ext       
 ./ext_skel --extname=dl  //生成名为dl的拓展库 
@@ -275,7 +275,7 @@ vi config.m4
 
 删除以下三行前面的dnl并保存
 
-```
+```basic
 PHP_ARG_WITH(dl, for dl support,
 Make sure that the comment is aligned: 
 [  --with-dl             Include dl support])
@@ -283,7 +283,7 @@ Make sure that the comment is aligned:
 
 运行phpize
 
-```
+```bash
 whereis phpize          //找出phpize路径
 /usr/local/bin/phpize     // 运行phpize
 vi dl.c
@@ -291,7 +291,7 @@ vi dl.c
 
 添加system(arg);
 
-```
+```bash
 if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &amp;arg, &amp;arg_len) == FAILURE) {
 	return;
 }
@@ -300,7 +300,7 @@ system(arg); //add this
 
 编译
 
-```
+```bash
 whereis php-config  //找出php-config的路径
 ./configure --whith-php-config=php-config路径
 make 

