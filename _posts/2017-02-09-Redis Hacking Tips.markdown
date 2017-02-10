@@ -2,7 +2,7 @@
 layout:     post
 title:      "Redis Hacking Tips"
 subtitle:   "collection"
-date:       2016-09-20
+date:       2017-02-09
 author:     "Urahara"
 header-img: "img/86a1b907d54bf7010394bf316e183e67.jpg"
 header-mask: 0.3
