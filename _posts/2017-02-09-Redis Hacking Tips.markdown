@@ -8,7 +8,7 @@ header-img: "img/86a1b907d54bf7010394bf316e183e67.jpg"
 header-mask: 0.3
 tags:
     - 渗透测试
-    - database	
+    - 数据库安全	
 
 ---
 
