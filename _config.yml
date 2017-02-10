@@ -85,10 +85,10 @@ friends: [
     {
        title: "阿德马Web安全",
        href: "http://www.nxadmin.com"
-#    },{
-#        title: "乱序",
-#        href: "http://mida.re/"
-#    },{
+    },{
+        title: "Th1s's Bl0g",
+        href: "http://www.th1s.cn"
+ #   },{
  #       title: "前端外刊评论",
  #       href: "http://qianduan.guru/"
  #   },{
