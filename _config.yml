@@ -4,14 +4,14 @@ SEOTitle: Urahara Blog
 header-img: img/home-bg.jpg
 email: Urahara3389@163.com
 description: "[root@Urahara]$ ~"
-keyword: "Urahara, 黑客, 无帽子, Hacker, @Urahara, Urahara Blog, 博客, 个人网站, 网络安全, 信息安全, 渗透测试, 移动安全, 物联网安全"
+keyword: "Urahara, 黑客, 白帽子, Hacker, @Urahara, Urahara Blog, 博客, 个人网站, 网络安全, 信息安全, 渗透测试, 代码审计, 移动安全, 物联网安全"
 url: "http://reverse-tcp.xyz"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
 # SNS settings
-RSS: false
+RSS: true
 weibo_username:     Urahara3389
 zhihu_username:     urahara
 github_username:    Urahara3389
@@ -88,9 +88,9 @@ friends: [
     },{
         title: "Th1s's Bl0g",
         href: "http://www.th1s.cn"
- #   },{
- #       title: "前端外刊评论",
- #       href: "http://qianduan.guru/"
+    },{
+        title: "WeaponX's Blog",
+        href: "http://weaponx.site"
  #   },{
  #       title: "天镶的博客",
  #       href: "http://lingyu.wang/"
