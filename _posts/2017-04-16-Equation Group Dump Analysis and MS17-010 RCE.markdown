@@ -87,7 +87,7 @@ Eternalblue模块设置成功
 
 DanderSpritz中可以调用pc_prep工具来生成自己的payload，我们在console中输入pc_prep -sharedlib开始
 
- ![pc_prep-sharedlib](http://reverse-tcp.xyz/img/FuzzBunch/pc_prep-sharedlib.png)
+ ![pc_prep -sharedlib](http://reverse-tcp.xyz/img/FuzzBunch/pc_prep -sharedlib.png)
 
 这里根据需求选择payload类型，由于目标操作系统是64位的，所以选择payload类型为3，其他配置如下
 
@@ -131,7 +131,7 @@ dll注入成功
 
 文件管理：
 
-![filesys](http://reverse-tcp.xyz/img/FuzzBunch/)
+![filesys](http://reverse-tcp.xyz/img/FuzzBunch/filesys.png)
 
 OS Shell：
 
