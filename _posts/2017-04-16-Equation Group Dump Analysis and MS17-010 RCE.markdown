@@ -63,7 +63,18 @@ Shadow Brokers周末公布的文件无疑对互联网造成了一次大地震，
 
 ![use](http://reverse-tcp.xyz/img/FuzzBunch/use.png)
 
-接下来使用Eternalblue进行MS17-010漏洞利用举例
+插件被分解成几类：
+
+- 目标识别和利用漏洞发现：Architouch、Rpctouch、Domaintouch、Smbtouch等；
+- 漏洞利用：EternalBlue、Emeraldthread、Eclipsedwing、EternalRomance等；
+- 攻击利用：Doublepulsar、Regread、Regwrite等；
+- 后门模块：Mofconfig（可能为设置MOF后门的插件，但暂时未测试成功）。
+
+然后我们通过使用Smbtouch插件执行execute命令使用smb协议来检测对方操作系统版本、架构、可利用的漏洞。
+
+![smbtouch](http://reverse-tcp.xyz/img/FuzzBunch/smbtouch.png)
+
+该例中发现Eternalblue可用，所以我们使用该插件插件进行MS17-010漏洞利用举例
 
 ![use Eternalblue](http://reverse-tcp.xyz/img/FuzzBunch/use Eternalblue.png)
 
@@ -81,11 +92,11 @@ Eternalblue模块设置成功
 
 ![DanderSpritz start](http://reverse-tcp.xyz/img/FuzzBunch/DanderSpritz start.png)
 
-启动后有三个error报错，可以不用理会
+启动后有三个error报错，可以不用理会（老外在Github上的更新版本不会存在此报错）
 
 ![DanderSpritz-error](http://reverse-tcp.xyz/img/FuzzBunch/DanderSpritz-error.png)
 
-DanderSpritz中可以调用pc_prep工具来生成自己的payload，我们在console中输入pc_prep -sharedlib开始
+DanderSpritz中可以调用pc_prep工具来生成自己的payload，我们在console中输入pc_prep -sharedlib开始(Github更新版使用pc2.2_prep)
 
  ![pc_prep -sharedlib](http://reverse-tcp.xyz/img/FuzzBunch/pc_prep -sharedlib.png)
 
@@ -108,6 +119,13 @@ DanderSpritz中可以调用pc_prep工具来生成自己的payload，我们在con
 端口监听成功
 
 完成上述步骤后我们再次回到fb shell当中，使用Doublepulsar模块来上传我们上一步生成的payload完成漏洞利用，需要注意在配置时选择Rundll来进行dll注入，同时设置dllpayload为我们生成的payload文件，其他配置根据需求配置即可
+
+DoublePulsar的4个功能：
+
+- Ping： 检测后门是否部署成功
+- RUNDLL：注入dll。
+- RunShellcode：注入shellcode
+- Uninstall:用于卸载系统上的后门 
 
 ![dll injection](http://reverse-tcp.xyz/img/FuzzBunch/dll injection.png)
 
@@ -141,11 +159,17 @@ OS Shell：
 
 ![screenshot](http://reverse-tcp.xyz/img/FuzzBunch/screenshot.png)
 
-其他的在console中输入aliases就可以查看所有的功能命令，剩下的功能呢就交给大家去挖掘了
+hashdump：
+
+![hashdump](http://reverse-tcp.xyz/img/FuzzBunch/hashdump.png)
+
+其他的在console中输入help就可以查看所有的功能命令，攻击功能可使用aliases命令查看，剩下的功能呢就交给大家去挖掘了
 
 ![aliases](http://reverse-tcp.xyz/img/FuzzBunch/aliases.png)
 
+-----
 
+2017.04.19更新 测试过程截图使用最早泄漏出来的版本，后续小伙伴们在测试时可能用了老外在Github上的[更新版本](https://github.com/misterch0c/shadowbroker)，与以上测试过程截图稍有差异，遂进行了此次更新。另外感谢Sanr表哥指导～
 
 
 
