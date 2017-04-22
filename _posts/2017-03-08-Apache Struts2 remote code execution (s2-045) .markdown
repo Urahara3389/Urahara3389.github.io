@@ -6,6 +6,7 @@ date:       2017-03-08
 author:     "Urahara"
 header-img: "img/e208e5acad48b373c311a46087757044.jpg"
 header-mask: 0.3
+catalog:    true 
 tags: 
     - Struts2
     - Remote Code Execution
@@ -460,11 +461,11 @@ header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@D
 
   最保险的办法直接使用最新版struts2的jar包替换原jar文件进行升级，有三个包必须要升级（升级前备份原版本jar包）：
 
--   Struts2-core-2.3.32.jar：struts2核心包，也是此漏洞发生的所在；
+- Struts2-core-2.3.32.jar：struts2核心包，也是此漏洞发生的所在；
 
--   xwork-core-2.3.32.jar：struts2依赖包，版本跟随struts2一起更新；
+- xwork-core-2.3.32.jar：struts2依赖包，版本跟随struts2一起更新；
 
--   ongl-3.0.19.jar：用于支持ognl表达式，为其他包提供依赖；
+- ongl-3.0.19.jar：用于支持ognl表达式，为其他包提供依赖；
 
      建议先在测试环境进行升级测试，查看是否会影响业务正常运行。
 
