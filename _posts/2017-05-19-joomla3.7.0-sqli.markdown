@@ -6,15 +6,15 @@ date:       2017-05-19
 author:     "Urahara"
 header-img: "img/57ac91865e5064f231cf620988223590.jpg"
 header-mask: 0.3
-tags:
+catalog:    true 
+tags: 
     - 代码审计
     - PHP
     - SQLi
     - Joomla
 
+
 ---
-
-
 
 ### 简介
 
@@ -454,7 +454,7 @@ http://127.0.0.1/Joomla_3.7.0/index.php?option=com_fields&view=fields&layout=mod
 
 ### 感谢
 
-第一次进行PHP代码审计漏洞应急，感谢xfkxfk指导，文章大部分内容也来自[xfkxfk的分析文章](http://blog.nsfocus.net/joomlav3-7-core-components-log-sql-injection-vulnerabilities/)，这个Joomla注入漏洞在调试的时候也是很繁琐，但理清思路后还是挺佩服黑产哥的 ​:sweat_smile:​
+第一次进行PHP代码审计漏洞应急，感谢xfkxfk指导，文章大部分内容也来自[xfkxfk的分析文章](http://blog.nsfocus.net/joomlav3-7-core-components-log-sql-injection-vulnerabilities/)，这个Joomla注入漏洞在调试的时候也是很繁琐，但理清思路后还是挺佩服黑产哥的 :sweat_smile:
 
 ### 参考
 
@@ -462,5 +462,4 @@ http://127.0.0.1/Joomla_3.7.0/index.php?option=com_fields&view=fields&layout=mod
 
 [https://blog.sucuri.net/2017/05/sql-injection-vulnerability-joomla-3-7.html](https://blog.sucuri.net/2017/05/sql-injection-vulnerability-joomla-3-7.html)  
 
-[http://bobao.360.cn/learning/detail/3868.html](http://bobao.360.cn/learning/detail/3868.html)
-
+[http://bobao.360.cn/learning/detail/3868.html

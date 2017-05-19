@@ -24,7 +24,7 @@ And you are using Jakarta based file upload Multipart parser
 
 ### Description
 
-> It is possible to perform a RCE attack with a malicious Content-Type value. If the Content-Type value isn't valid an exception is thrown which is then used to display an error message to a user.
+> It is possible to perform a RCE attack with a malicious Content-Type value. If the Content-Type value isn't valid an exception is thrown which is then used to display an error message to a user.
 
 可以了解到的是该漏洞利用点为文件上传http请求头中的Content-Type，Struts2在处理错误信息时出现问题，可以在此处注入OGNL表达式造成RCE。
 
@@ -112,7 +112,7 @@ public HttpServletRequest wrapRequest(HttpServletRequest request)
       return request;
     }
     String content_type = request.getContentType(); 
-  	// struts.multipart.parser：该属性指定处理multipart/form-data的MIME类型（文件上传）请求的框架，该属性支持cos、pell和jakarta等属性值，即分别对应使用cos的文件上传框架、pell上传及common-fileupload文件上传框架。该属性的默认值为jakarta。
+    // struts.multipart.parser：该属性指定处理multipart/form-data的MIME类型（文件上传）请求的框架，该属性支持cos、pell和jakarta等属性值，即分别对应使用cos的文件上传框架、pell上传及common-fileupload文件上传框架。该属性的默认值为jakarta。
 
     if ((content_type != null) && (content_type.contains("multipart/form-data")))
     // 判断是否以post方式向服务器提交二进制数据，所以poc中需声明multipart/form-data
@@ -279,7 +279,7 @@ public class ServletFileUpload
 }
 ```
 
-继续跟踪 ***parseRequest*** 在org.apache.commons.fileupload FileUploadBase.java
+继续跟踪 ***parseRequest*** 在org.apache.commons.fileupload FileUploadBase.java
 
 ```java
 public List<FileItem> parseRequest(RequestContext ctx)
@@ -384,7 +384,7 @@ private class FileItemIteratorImpl
     private boolean itemValid;
     private boolean eof;
  // ……
-	FileItemIteratorImpl(RequestContext ctx)
+  FileItemIteratorImpl(RequestContext ctx)
       throws FileUploadException, IOException
     {
       if (ctx == null) {
@@ -395,7 +395,7 @@ private class FileItemIteratorImpl
         throw new FileUploadBase.InvalidContentTypeException(String.format("the request doesn't contain a %s or %s stream, content type header is %s", new Object[] { "multipart/form-data", "multipart/mixed", contentType })); // 对Content-Type进行异常判断抛出异常内容，要注意的是异常内容中含有原始的Content-Type内容
       }
       InputStream input = ctx.getInputStream();
-  	  // ……
+      // ……
     }
   }  
 ```
