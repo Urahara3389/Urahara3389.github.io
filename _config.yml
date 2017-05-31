@@ -4,7 +4,7 @@ SEOTitle: Urahara Blog
 header-img: img/home-bg.jpg
 email: Urahara3389@163.com
 description: "[root@Urahara]$ ~"
-keyword: "Urahara, fengliu, 风流，黑客, 白帽子, Hacker, @Urahara, Urahara Blog, 博客, 网络安全, Web安全, 渗透测试, 代码审计, 移动安全, 物联网安全"
+keyword: "Urahara, fengliu, 风流, 黑客, Hacker, @Urahara, Urahara Blog, 网络安全, 信息安全, Web安全, 渗透测试, 代码审计, 二进制安全，移动安全，Infosec
 url: "http://reverse-tcp.xyz"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -15,7 +15,7 @@ RSS: true
 weibo_username:     Urahara3389
 zhihu_username:     urahara
 github_username:    Urahara3389
-#twitter_username:  Urahara
+twitter_username:  Urahara3389
 #facebook_username:  Urahara
 # linkedin_username:  firstname-lastname-idxxxx
 
@@ -48,7 +48,10 @@ kramdown:
 
 
 # Disqus settings
-#disqus_username: _your_disqus_short_name_
+#disqus_username: Urahara
+
+# Netease setttings
+netease_comment: true
 
 # Duoshuo settings
 duoshuo_username: Urahara
@@ -79,7 +82,9 @@ featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
 
 
-
+# Progressive Web Apps
+chrome-tab-theme-color: "#000000"
+service-worker: true
 # Friends
 friends: [
     {
@@ -113,7 +118,7 @@ friends: [
  #       title: "尹峰以为",
  #       href: "http://ingf.github.io/"
  #   },{
- #       title: "前端神盾局",
+ #       title: "前端�?盾局",
  #       href: "http://wepiaofei.github.io/blog/"
     }
 ]
