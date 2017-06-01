@@ -4,7 +4,7 @@ SEOTitle: Urahara Blog
 header-img: img/home-bg.jpg
 email: Urahara3389@163.com
 description: "[root@Urahara]$ ~"
-keyword: "Urahara, fengliu, 风流, 黑客, Hacker, @Urahara, Urahara Blog, 网络安全, 信息安全, Web安全, 渗透测试, 代码审计, 二进制安全，移动安全，Infosec
+keyword: "Urahara, fengliu, Infosec"
 url: "http://reverse-tcp.xyz"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -72,7 +72,7 @@ ga_domain: reverse-tcp.xyz
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: " 新的开始，新的挑战。不忘初心，方得始终。"
+sidebar-about-description: "新的开始，新的挑战。不忘初心，方得始终。"
 sidebar-avatar: /img/Urahara.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -99,26 +99,8 @@ friends: [
     },{
         title: "Sanr's Blog",
         href: "http://0x007.blog.51cto.com"
- #   },{
- #       title: "Luke 的自留地",
- #       href: "http://hmqk1995.github.io"
- #   },{
-  #      title: "Ebn's Blog",
-  #      href: "http://ebnbin.com/"
- #   },{
- #       title: "SmdCn's Blog",
- #       href: "http://blog.smdcn.net"
- #   },{
- #       title: "解旻的博客",
- #       href: "http://xieminis.me/"
- #   },{
- #       title: "DHong Say",
- #       href: "http://dhong.co"
- #   },{
- #       title: "尹峰以为",
- #       href: "http://ingf.github.io/"
- #   },{
- #       title: "前端�?盾局",
- #       href: "http://wepiaofei.github.io/blog/"
+    },{
+        title: "xxlegend's Blog",
+        href: "http://xxlegend.com/"
     }
 ]
