@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Apache Struts2 Remote Code Execution (S2-052) "
+title:      "Apache Struts2 Remote Code Execution (S2-053) "
 subtitle:   "Analysis of the Vulnerabilities"
 date:       2017-09-15
 author:     "Urahara"
