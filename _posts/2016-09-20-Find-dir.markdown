@@ -1,0 +1,25 @@
+---
+layout:     post
+title:      "一条命令找出系统web路径"
+date:       2016-09-20
+categories: [pentest]
+
+---
+
+​	平常渗透过程中，我们可能利用远程命令执行漏洞反弹了一个shell回来，但是为了方便操作我们可能需要写一个webshell到目标服务器，但是如何才能在一个系统里边快速的定位到网站的绝对路径呢，如何才能在标准化系统中通过一条命令快速实现这一点呢？我不知道小伙伴们通常用什么样的方法，这里给大家介绍几种方法。
+
+**方法一** ：打开web查看源码，复制一个特征字符串，然后替换进下面命令的htmlString搜索之。
+
+- Win ：findstr /s/i/n /d:E:\code\xampp\htdocs\ /c:"htmlString" \*.\*
+- Linux：find / -name "*.*" \| xargs grep"htmlString"
+
+**方法二** ：对于linux系统，我们也可以尝试通过history命令去查找，同样的也可以去看.bash_history
+
+history \| grep -E 'cd\|vi\|ed\|nano\|et\|mkdir\|rm\|find\|ls\|mv' \|grep -v grep \| grep -E 'www\|html\|nginx\|apache\|php\|lighttp\|web' -i
+
+**方法三** ：windows系统中也可以使用dir去匹配一个特征文件名
+
+dir /s/a-d/b E:\code\xampp\htdocs\\\*重复度较低的文件名（支持通配符）\*
+
+
+
