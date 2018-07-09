@@ -2,7 +2,7 @@
 layout:     post
 title:      "PHP Disabled_functions Bypass"
 date:       2016-12-22
-categories: [PHP，Pentest]
+categories: [PHP, Pentest]
 
 ---
 
