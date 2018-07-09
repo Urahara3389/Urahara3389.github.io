@@ -1,11 +1,12 @@
-title: Stack Problems
-description: My Personal Stack Problems
-author: Agus Makmun
-github: https://github.com/agusmakmun
-about: I am freelance developer. Currently doing more in backend, focused in Python and Django.
-disqus_shortname: stackproblems
-google_analytics: UA-XXXXXXXX-Y
-avatar_url: /static/img/avatar.jpg
+title: Urahara Blog
+description: "[root@Urahara ~]$ "
+author: Urahara
+github: https://github.com/Urahara3389
+keyword: "Urahara, fengliu, Infosec"
+about: Co-founder of FormSec, security researcher, bug hunter, pentester. Opinions are my own.
+# disqus_shortname: stackproblems
+google_analytics: UA-90918419-1
+avatar_url: /static/img/Urahara.jpg
 
 enableTags: true
 tagarray: []
@@ -16,30 +17,41 @@ collections:
     permalink: /project/:path/
 
 social:
-    - icon: fa-facebook
-      link: "#"
+    - icon: fa-weibo
+      link: "https://weibo.com/Urahara3389"
     - icon: fa-twitter
-      link: "https://twitter.com/agusmakmun6"
-    - icon: fa-linkedin
-      link: "https://www.linkedin.com/in/summonagus"
-    - icon: fa-stack-exchange
-      link: "#"
+      link: "https://twitter.com/Urahara3389"
+    - icon: fa-zhihu
+      link: "https://www.zhihu.com/people/urahara"
+    - icon: fa-mail
+      link: "fengliu@formsec.cn"
     - icon: fa-github
-      link: "https://github.com/agusmakmun"
+      link: "https://github.com/Urahara3389"
 
 share:
-  twitter_username: agusmakmun6
-  fb_appid: 1749788565247320
+  twitter_username: Urahara3389
+  # fb_appid: 1749788565247320
 
 urls:
     - text: About Me
       url: /about/
-    - text: My Projects
-      url: /projects/
+    # - text: My Projects
+    #   url: /projects/
     - text: XML Feed
       url: /feed.xml
 
-url: "https://agusmakmun.github.io"
+friends:
+    - text: 阿德马Web安全
+      url: "http://www.nxadmin.com"
+    - text: wooyaa的学习笔记
+      url: "http://wooyaa.me/"
+    - text: WeaponX's Blog
+      url: "http://weaponx.site"
+    - text: xxlegend's Blog
+      url: "http://xxlegend.com/"
+
+
+url: "http://reverse-tcp.xyz" 
 baseurl: ""
 paginate: 20
 per_page: 20
