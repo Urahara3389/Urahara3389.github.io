@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Apache Struts2 Remote Code Execution (S2-052) "
-subtitle:   "Analysis of the Vulnerabilities"
 date:       2017-09-07
-author:     "Urahara"
 categories: [Struts2, Remote Code Execution, Java Security]
 
 ---
@@ -47,7 +45,7 @@ Struts 2.5 - Struts 2.5.12
 
 从整个过程来看，我们需要注意的是这个漏洞的触发只需要将content-type设置为`application/xml`，再发送poc即可，与请求方式和请求链接无关，这种情况是比较通用的。而还有一种情况是在请求类似于`/struts2-rest-showcase/orders/5/update.xml`这种xml资源时，需要设置content-type为`delicious/bookmark+xml`，这在[xxlegend](http://xxlegend.com/)的分析POC中有体现，struts2官方发的相关缓解措施也是无效的。
 
-![poc](http://reverse-tcp.xyz/img/struts2/s2-052-poc.png)
+![poc](http://reverse-tcp.xyz/static/img/posts/struts2/s2-052-poc.png)
 
 ### Solution
 

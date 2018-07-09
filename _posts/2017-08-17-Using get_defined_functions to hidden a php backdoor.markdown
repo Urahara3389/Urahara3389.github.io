@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Using get_defined_functions To Hidden A PHP Backdoor"
-subtitle:   "A little record"
 date:       2017-08-17
-author:     "Urahara"
 categories: [Bypass, Webshell]
 
 

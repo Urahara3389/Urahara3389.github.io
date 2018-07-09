@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Apache Struts2 Remote Code Execution (S2-045) "
-subtitle:   "Analysis of the Vulnerabilities"
 date:       2017-03-08
-author:     "Urahara"
 categories: [Struts2, Remote Code Execution, Java Security]
 
 ---
@@ -463,14 +461,8 @@ header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@D
 
      建议先在测试环境进行升级测试，查看是否会影响业务正常运行。
 
-    ​
-
-  ​
-
 -----
 
 ### Referer
 
 [http://blog.nsfocus.net/apache-struts2-remote-code-execution-vulnerability-analysis-program/](http://blog.nsfocus.net/apache-struts2-remote-code-execution-vulnerability-analysis-program/)
-
-**感谢我盟！感谢6哥！**

@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Joomla V3.7.0 核心组件SQL注入漏洞分析"
-subtitle:   "SQL Injection Vulnerability in Joomla! 3.7"
 date:       2017-05-19
-author:     "Urahara"
 categories: [SQLi, Code Audit]
 
 ---

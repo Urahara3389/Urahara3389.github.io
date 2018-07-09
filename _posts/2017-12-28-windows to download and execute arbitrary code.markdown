@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Windows上传并执行恶意代码的N种姿势"
-subtitle:   "Tricks Collection"
 date:       2017-12-28
-author:     "Urahara"
 categories: [Pentest, Windows, Red Team]
 
 ---

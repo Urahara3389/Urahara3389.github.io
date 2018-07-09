@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Keyboard Logger On Linux - Part 1"
-subtitle:   "Serial"
 date:       2016-12-23
-author:     "Urahara"
 categories: [Keyboard Logger，Backdoor]
 
 ---

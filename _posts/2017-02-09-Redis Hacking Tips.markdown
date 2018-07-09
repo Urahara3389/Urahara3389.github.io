@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Redis Hacking Tips"
-subtitle:   "collection"
 date:       2017-02-09
-author:     "Urahara"
 categories: [Pentest, database, Redis]
 
 ---

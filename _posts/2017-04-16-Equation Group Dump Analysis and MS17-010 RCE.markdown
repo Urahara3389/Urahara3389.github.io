@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Equation Group泄漏工具简单试用与MS17-010漏洞利用"
-subtitle:   "Analysis of the Vulnerabilities"
 date:       2017-04-17
-author:     "Urahara"
 categories: [Pentest, Red Team, FuzzBunch]
 
 ---

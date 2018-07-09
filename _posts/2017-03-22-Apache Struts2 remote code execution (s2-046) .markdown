@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Apache Struts2 Remote Code Execution (S2-046) "
-subtitle:   "Analysis of the Vulnerabilities"
 date:       2017-03-22
-author:     "Urahara"
 categories: [Struts2, Remote Code Execution, Java Security]
 
 ---

@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Some Ways To Create An Interactive Shell On Windows"
-subtitle:   "A little record|Continuously updated"
 date:       2017-05-27
-author:     "Urahara"
 categories: [Pentest, Red Team]
 
 

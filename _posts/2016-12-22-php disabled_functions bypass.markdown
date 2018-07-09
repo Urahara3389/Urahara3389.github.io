@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "PHP Disabled_functions Bypass"
-subtitle:   "bypass"
 date:       2016-12-22
-author:     "Urahara"
 categories: [webshell，Bypass，Backdoor]
 
 ---

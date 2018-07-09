@@ -1,9 +1,7 @@
 ---
 layout:     post
 title:      "Some Ways To Create An Interactive Shell On Linux"
-subtitle:   "A little record|Continuously updated"
 date:       2017-01-08
-author:     "Urahara"
 categories: [Pentest]
 
 
