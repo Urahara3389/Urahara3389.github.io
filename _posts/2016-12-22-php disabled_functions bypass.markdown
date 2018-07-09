@@ -4,13 +4,7 @@ title:      "PHP Disabled_functions Bypass"
 subtitle:   "bypass"
 date:       2016-12-22
 author:     "Urahara"
-header-img: "img/4eff2c041976ea22afb7092a53188c70.jpg"
-header-mask: 0.3
-tags:
-    - php
-    - bypass
-    - webshell
-
+categories: [webshell，Bypass，Backdoor]
 
 ---
 

@@ -428,11 +428,11 @@ public function order($columns)
 
 可以看一下到这里$query的内容，传入的poc代码已成功拼接进入sql语句
 
-![sql](http://reverse-tcp.xyz/img/Joomla/com_fields_sql.png)
+![sql](http://reverse-tcp.xyz/static/img/_posts/Joomla/com_fields_sql.png)
 
 这里附一张该漏洞的审计思路图，看起来比较复杂，但是表哥们配合本文调试一遍应该就都可以理解该漏洞了。
 
-![mind](http://reverse-tcp.xyz/img/Joomla/com_fields_mind.png)
+![mind](http://reverse-tcp.xyz/static/img/_posts/Joomla/com_fields_mind.png)
 
 ### 漏洞验证
 
@@ -450,7 +450,7 @@ http://127.0.0.1/Joomla_3.7.0/index.php?option=com_fields&view=fields&layout=mod
 
 在文件\Joomla_3.7.0\libraries\legacy\model\list.php中，处理fullordering的时候，当不满足条件时，添加else条件处理过程，使用系统默认的值进行查询
 
-![solution](http://reverse-tcp.xyz/img/Joomla/com_fields_solution.png)
+![solution](http://reverse-tcp.xyz/static/img/_posts/Joomla/com_fields_solution.png)
 
 ### 感谢
 

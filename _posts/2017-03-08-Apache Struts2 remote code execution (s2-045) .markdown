@@ -4,13 +4,7 @@ title:      "Apache Struts2 Remote Code Execution (S2-045) "
 subtitle:   "Analysis of the Vulnerabilities"
 date:       2017-03-08
 author:     "Urahara"
-header-img: "img/e208e5acad48b373c311a46087757044.jpg"
-header-mask: 0.3
-catalog:    true 
-tags: 
-    - Struts2
-    - Remote Code Execution
-
+categories: [Struts2, Remote Code Execution, Java Security]
 
 ---
 
@@ -431,11 +425,11 @@ header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@D
 
 **批量检测POC执行效果**
 
-![s2-045-bd](http://reverse-tcp.xyz/img/s2-045-bd.png)
+![s2-045-bd](http://reverse-tcp.xyz/static/img/_posts/s2-045-bd.png)
 
 **EXP执行效果**
 
-![s2-045-exp](http://reverse-tcp.xyz/img/s2-045-exp.png)
+![s2-045-exp](http://reverse-tcp.xyz/static/img/_posts/s2-045-exp.png)
 
 注： 以上脚本适用于https站点
 

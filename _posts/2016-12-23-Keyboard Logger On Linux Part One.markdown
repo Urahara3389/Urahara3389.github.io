@@ -4,13 +4,7 @@ title:      "Keyboard Logger On Linux - Part 1"
 subtitle:   "Serial"
 date:       2016-12-23
 author:     "Urahara"
-header-img: "img/05f7a6edc6d63e4f97353f87fbb3d18d.jpg"
-header-mask: 0.3
-tags:
-    - Keyboard Logger
-    - Backdoor 
-
-
+categories: [Keyboard Logger，Backdoor]
 
 ---
 

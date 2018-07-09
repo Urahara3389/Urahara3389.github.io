@@ -1,114 +1,56 @@
-# Site settings
 title: Urahara Blog
-SEOTitle: Urahara Blog
-header-img: img/home-bg.jpg
-email: Urahara3389@163.com
-description: "[root@Urahara]$ ~"
+description: "[root@Urahara ~]$"
+author: Urahara
+github: https://github.com/Urahara3389
 keyword: "Urahara, fengliu, Infosec"
-url: "http://reverse-tcp.xyz"              # your host, for absolute URL
-baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+about: Co-founder of FormSec, security researcher, bug hunter, pentester. Opinions are my own.
+# disqus_shortname: stackproblems
+google_analytics: UA-90918419-1
+avatar_url: /static/img/Urahara.jpg
 
+enableTags: true
+tagarray: []
 
+collections:
+  project:
+    output: true
+    permalink: /project/:path/
 
-# SNS settings
-RSS: true
-weibo_username:     Urahara3389
-zhihu_username:     urahara
-github_username:    Urahara3389
-twitter_username:  Urahara3389
-#facebook_username:  Urahara
-# linkedin_username:  firstname-lastname-idxxxx
+social:
+    - icon: fa-weibo
+      link: "https://weibo.com/Urahara3389"
+    - icon: fa-twitter
+      link: "https://twitter.com/Urahara3389"
+    # - icon: fa-linkedin
+    #   link: "https://www.linkedin.com/in/summonagus"
+    # - icon: fa-stack-exchange
+    #   link: "#"
+    - icon: fa-github
+      link: "https://github.com/Urahara3389"
 
+share:
+  twitter_username: Urahara3389
+  # fb_appid: 1749788565247320
 
+urls:
+    - text: About Me
+      url: /about/
+    # - text: My Projects
+    #   url: /projects/
+    - text: XML Feed
+      url: /feed.xml
 
-# Build settings
-# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
-highlighter: rouge
-permalink: pretty
-paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
-anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
-
-
-plugins:
-  - jekyll-sitemap
-
-# Gems
-# from PR#40, to support local preview for Jekyll 3.0
-gems: [jekyll-paginate]
-
-
-
-# Markdown settings
-# replace redcarpet to kramdown,
-# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
-# document: http://jekyllrb.com/docs/configuration/#kramdown
+url: "http://reverse-tcp.xyz" 
+baseurl: ""
+paginate: 20
+per_page: 20
+paginate_path: "/page/:num/"
 markdown: kramdown
-kramdown:
-  input: GFM                            # use Github Flavored Markdown !important
+gems:
+  - jekyll-paginate
+  - jekyll-gist
 
-
-
-# Disqus settings
-#disqus_username: Urahara
-
-# Netease setttings
-netease_comment: true
-
-# Duoshuo settings
-duoshuo_username: Urahara
-# Share component is depend on Comment so we can NOT use share only.
-duoshuo_share: true                     # set to false if you want to use Comment without Sharing
-
-
-
-
-# Analytics settings
-# Baidu Analytics
-ba_track_id: e7e0ae5ff860b05513e4ed6ecf4f57e3
-# Google Analytics
-ga_track_id: 'UA-90918419-1'            # Format: UA-xxxxxx-xx
-ga_domain: reverse-tcp.xyz
-
-
-
-# Sidebar settings
-sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "新的开始，新的挑战。不忘初心，方得始终。"
-sidebar-avatar: /img/Urahara.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
-
-
-
-# Featured Tags
-featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
-
-
-# Progressive Web Apps
-chrome-tab-theme-color: "#000000"
-service-worker: true
-# Friends
-friends: [
-    {
-       title: "阿德马Web安全",
-       href: "http://www.nxadmin.com"
-    },{
-        title: "wooyaa的学习笔记",
-        href: "http://wooyaa.me/"
-    },{
-        title: "Th1s's Bl0g",
-        href: "http://www.th1s.cn"
-    },{
-        title: "WeaponX's Blog",
-        href: "http://weaponx.site"
-    },{
-        title: "Sanr's Blog",
-        href: "http://0x007.blog.51cto.com"
-    },{
-        title: "xxlegend's Blog",
-        href: "http://xxlegend.com/"
-    },{
-        title: "GeT1t's Blog",
-        href: "http://www.get1t.cn/"
-    }
-]
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all

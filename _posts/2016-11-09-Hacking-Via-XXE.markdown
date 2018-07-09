@@ -4,12 +4,7 @@ title:      "Hacking via XXE"
 subtitle:   "on way"
 date:       2016-11-25
 author:     "Urahara"
-header-img: "img/0d0f51ff97b37b54f621e858075e7a05.jpg"
-header-mask: 0.3
-tags:
-    - 渗透测试
-
-
+categories: [pentest, XXE]
 
 ---
 

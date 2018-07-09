@@ -4,12 +4,7 @@ title:      "域渗透-信息收集基础"
 subtitle:   "内网渗透-域环境"
 date:       2016-12-16
 author:     "Urahara"
-header-img: "img/1e9a2b0d5bae82200a649cef7ddfc64c.jpg"
-header-mask: 0.3
-tags:
-    - 渗透测试
-    - 内网渗透
-    - 域渗透
+categories: [Red Team]
 
 ---
 

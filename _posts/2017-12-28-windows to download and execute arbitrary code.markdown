@@ -4,15 +4,7 @@ title:      "Windows上传并执行恶意代码的N种姿势"
 subtitle:   "Tricks Collection"
 date:       2017-12-28
 author:     "Urahara"
-header-img: "img/985b529ed039ca38db9b6fbeddd6dfa7.jpg"
-header-mask: 0.3
-catalog:    true 
-tags: 
-    - 渗透测试
-    - Windows
-    - DLL Injection
-    - Backdoor
-    - AppLocker ByPass
+categories: [Pentest, Windows, Red Team]
 
 ---
 
