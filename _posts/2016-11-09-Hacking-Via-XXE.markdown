@@ -2,7 +2,7 @@
 layout:     post
 title:      "Hacking via XXE"
 date:       2016-11-25
-categories: [pentest]
+categories: [Pentest]
 
 ---
 
@@ -178,9 +178,9 @@ Content-Length: 127
 
 ​	DTD支持http、ftp、gopher等网络协议，通过这些协议可以发送SSRF攻击请求，包括内网探测及攻击内网服务器等。
 
-![ssrf1](http://reverse-tcp.xyz/img/xxe/SSRF1.png)
+![ssrf1](http://reverse-tcp.xyz/static/img/posts/xxe/SSRF1.png)
 
-![ssrf2](http://reverse-tcp.xyz/img/xxe/SSRF2.png)
+![ssrf2](http://reverse-tcp.xyz/static/img/posts/xxe/SSRF2.png)
 
 **RCE**
 
@@ -198,7 +198,7 @@ Content-Length: 127
 
 
 
-![RCE](http://reverse-tcp.xyz/img/xxe/RCE.png)
+![RCE](http://reverse-tcp.xyz/static/img/posts/xxe/RCE.png)
 
 **DOS**
 
