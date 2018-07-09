@@ -2,13 +2,13 @@
 layout:     post
 title:      "Couchdb命令执行"
 date:       2016-09-11
-categories: [pentest, database security, Remote Command Execution]
+categories: [Pentest, Database, Remote Command Execution, CouchDB]
 
 ---
 
 
 ## 背景介绍
- CouchDB是一个开源的面向文档的数据库管理系统，可以通过 RESTful JavaScript Object Notation (JSON) API 访问。CouchDB 可以安装在大部分 POSIX 系统上，包括 Linux和 Mac OS X。
+ CouchDB是一个开源的面向文档的数据库管理系统，可以通过 RESTful JavaScript Object Notation (JSON) API 访问。CouchDB可以安装在大部分POSIX系统上，包括Linux和Mac OS X。
 
 ## 漏洞介绍
 Couchdb默认会在5984端口开放Restful的API接口，如果使用SSL的话就会监听在6984端口，用于数据库的管理功能。其HTTP Server默认开启时没有进行验证，而且绑定在0.0.0.0，所有用户均可通过API访问导致未授权访问。
