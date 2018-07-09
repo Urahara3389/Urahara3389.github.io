@@ -40,6 +40,17 @@ urls:
     - text: XML Feed
       url: /feed.xml
 
+friends:
+    - text: 阿德马Web安全
+      url: "http://www.nxadmin.com"
+    - text: wooyaa的学习笔记
+      url: "http://wooyaa.me/"
+    - text: WeaponX's Blog
+      url: "http://weaponx.site"
+    - text: xxlegend's Blog
+      url: "http://xxlegend.com/"
+
+
 url: "http://reverse-tcp.xyz" 
 baseurl: ""
 paginate: 20
