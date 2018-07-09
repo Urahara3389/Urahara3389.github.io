@@ -4,10 +4,7 @@ title:      "Some Ways To Create An Interactive Shell On Linux"
 subtitle:   "A little record|Continuously updated"
 date:       2017-01-08
 author:     "Urahara"
-header-img: "img/d4d5dfc09f330ce82b09b792d4281f42.jpg"
-header-mask: 0.3
-tags:
-    - 渗透测试
+categories: [Pentest]
 
 
 ---

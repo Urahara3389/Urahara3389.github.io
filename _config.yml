@@ -21,8 +21,8 @@ social:
       link: "https://weibo.com/Urahara3389"
     - icon: fa-twitter
       link: "https://twitter.com/Urahara3389"
-    # - icon: fa-linkedin
-    #   link: "https://www.linkedin.com/in/summonagus"
+    - icon: fa-zhihu
+      link: "https://www.zhihu.com/people/urahara"
     # - icon: fa-stack-exchange
     #   link: "#"
     - icon: fa-github

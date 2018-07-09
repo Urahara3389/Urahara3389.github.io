@@ -4,10 +4,7 @@ title:      "一条命令找出系统web路径"
 subtitle:   "一点点记录"
 date:       2016-09-20
 author:     "Urahara"
-header-img: "img/985b529ed039ca38db9b6fbeddd6dfa7.jpg"
-header-mask: 0.3
-tags:
-    - 渗透测试
+categories: [pentest]
 
 ---
 
