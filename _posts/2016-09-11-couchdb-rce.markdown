@@ -2,7 +2,8 @@
 layout:     post
 title:      "Remote Command Execution via CouchDB"
 date:       2016-09-11
-categories: [Pentest, Database, Remote Command Execution, CouchDB]
+categories: Pentest, Database
+tags:		Remote Command Execution, CouchDB
 
 ---
 
