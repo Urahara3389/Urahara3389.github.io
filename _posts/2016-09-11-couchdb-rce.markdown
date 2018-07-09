@@ -1,10 +1,7 @@
 ---
 layout:     post
 title:      "Couchdb命令执行"
-subtitle:   "一点点记录"
 date:       2016-09-11
-author:     "Urahara"
-header-mask: 0.3
 categories: [pentest, database security, Remote Command Execution]
 
 ---

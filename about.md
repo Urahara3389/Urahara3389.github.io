@@ -4,9 +4,12 @@ title: About
 permalink: /about/
 ---
 
+#### Urahara , 风流#FormSecTeam
+
 #### Co-founder of FormSec, security researcher, bug hunter, pentester.
 
 #### Focused in web security, red & blue team
+
 
 ---
 
@@ -14,7 +17,7 @@ permalink: /about/
 分享内容包括WEB安全，漏洞分析，RedTeam Tricks，IOT安全，二进制安全等等，得到了大家的高度认可
 希望大家在SecTips星球中有所成长和提高
 
-![](http://reverse-tcp.xyz/static/img/SecTips2.jpg)
+![](http://reverse-tcp.xyz/static/img/sectips.png)
 
 
 

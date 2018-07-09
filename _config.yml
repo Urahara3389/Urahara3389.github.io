@@ -1,5 +1,5 @@
 title: Urahara Blog
-description: "[root@Urahara ~]$"
+description: "[root@Urahara ~]$ "
 author: Urahara
 github: https://github.com/Urahara3389
 keyword: "Urahara, fengliu, Infosec"
@@ -23,8 +23,8 @@ social:
       link: "https://twitter.com/Urahara3389"
     - icon: fa-zhihu
       link: "https://www.zhihu.com/people/urahara"
-    # - icon: fa-stack-exchange
-    #   link: "#"
+    - icon: fa-mail
+      link: "fengliu@formsec.cn"
     - icon: fa-github
       link: "https://github.com/Urahara3389"
 
