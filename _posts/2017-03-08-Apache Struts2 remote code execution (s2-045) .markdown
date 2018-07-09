@@ -2,7 +2,7 @@
 layout:     post
 title:      "Apache Struts2 Remote Code Execution (S2-045) "
 date:       2017-03-08
-categories: [Struts2, Remote Code Execution, Java Security]
+categories: [Java, Code Audit]
 
 ---
 

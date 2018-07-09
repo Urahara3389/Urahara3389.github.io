@@ -2,7 +2,7 @@
 layout:     post
 title:      "Windows上传并执行恶意代码的N种姿势"
 date:       2017-12-28
-categories: [Pentest, Windows, Red Team]
+categories: [Pentest, Red Team]
 
 ---
 

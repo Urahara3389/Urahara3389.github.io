@@ -2,7 +2,7 @@
 layout:     post
 title:      "域渗透-信息收集基础"
 date:       2016-12-16
-categories: [Red Team]
+categories: [Red Team, Pentest]
 
 ---
 

@@ -2,7 +2,7 @@
 layout:     post
 title:      "Hacking via XXE"
 date:       2016-11-25
-categories: [pentest, XXE]
+categories: [pentest]
 
 ---
 

@@ -2,7 +2,7 @@
 layout:     post
 title:      "Equation Group泄漏工具简单试用与MS17-010漏洞利用"
 date:       2017-04-17
-categories: [Pentest, Red Team, FuzzBunch]
+categories: [Red Team, Threat Analysis]
 
 ---
 

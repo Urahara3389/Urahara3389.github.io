@@ -2,7 +2,7 @@
 layout:     post
 title:      "Redis Hacking Tips"
 date:       2017-02-09
-categories: [Pentest, database, Redis]
+categories: [Pentest, Database]
 
 ---
 

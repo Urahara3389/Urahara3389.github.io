@@ -2,7 +2,7 @@
 layout:     post
 title:      "Using get_defined_functions To Hidden A PHP Backdoor"
 date:       2017-08-17
-categories: [Bypass, Webshell]
+categories: [PHP, Pentest]
 
 ---
 

@@ -2,7 +2,7 @@
 layout:     post
 title:      "Keyboard Logger On Linux - Part 1"
 date:       2016-12-23
-categories: [Keyboard Logger，Backdoor]
+categories: [Pentest, Red Team]
 
 ---
 

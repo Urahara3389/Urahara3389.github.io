@@ -2,7 +2,7 @@
 layout:     post
 title:      "Joomla V3.7.0 核心组件SQL注入漏洞分析"
 date:       2017-05-19
-categories: [SQLi, Code Audit]
+categories: [PHP, Code Audit]
 
 ---
 
