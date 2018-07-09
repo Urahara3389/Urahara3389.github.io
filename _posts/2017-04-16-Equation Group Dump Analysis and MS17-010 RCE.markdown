@@ -50,13 +50,13 @@ Shadow Brokers周末公布的文件无疑对互联网造成了一次大地震，
 
 新建项目并进行会话设置，包括目标IP、回调IP、Log目录及关闭重定向
 
-![new project](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/new project.png)
+![new project](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/new project.png)
 
 完成以上步骤后我们就可以进入至fb shell当中，这里我们可以使用help命令查看使用帮助，并使用use命令来调用相关模块插件
 
-![help](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/help.png)
+![help](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/help.png)
 
-![use](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/use.png)
+![use](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/use.png)
 
 插件被分解成几类：
 
@@ -67,49 +67,49 @@ Shadow Brokers周末公布的文件无疑对互联网造成了一次大地震，
 
 然后我们通过使用Smbtouch插件执行execute命令使用smb协议来检测对方操作系统版本、架构、可利用的漏洞。
 
-![smbtouch](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/smbtouch.png)
+![smbtouch](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/smbtouch.png)
 
 该例中发现Eternalblue可用，所以我们使用该插件插件进行MS17-010漏洞利用举例
 
-![use Eternalblue](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/use Eternalblue.png)
+![use Eternalblue](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/use Eternalblue.png)
 
 接下来的设置大多使用默认值就行，需要注意的是在选择靶机操作系统时根据需要切换就行，这里我们选择1） WIN72K8R2，攻击模式选择 1） FB
 
-![target and mode](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/target and mode.png)
+![target and mode](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/target and mode.png)
 
 Eternalblue模块设置成功
 
-![Module-Eternalblue](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/Module-Eternalblue.png)
+![Module-Eternalblue](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/Module-Eternalblue.png)
 
 这里我们开始配合DanderSpritz工具进行利用，这东西有点像远控木马客户端，功能也非常强大。
 
 在windows目录下有一个Start.jar文件，可以双击直接运行也可以运行start_lp.py文件来运行，启动时需要配置log目录为项目log路径（我们在启动FuzzBunch攻击框架时设置的目录加上项目名称即为项目日志目录）
 
-![DanderSpritz start](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/DanderSpritz start.png)
+![DanderSpritz start](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/DanderSpritz start.png)
 
 启动后有三个error报错，可以不用理会（老外在Github上的更新版本不会存在此报错）
 
-![DanderSpritz-error](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/DanderSpritz-error.png)
+![DanderSpritz-error](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/DanderSpritz-error.png)
 
 DanderSpritz中可以调用pc_prep工具来生成自己的payload，我们在console中输入pc_prep -sharedlib开始(Github更新版使用pc2.2_prep)
 
- ![pc_prep -sharedlib](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/pc_prep -sharedlib.png)
+ ![pc_prep -sharedlib](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/pc_prep -sharedlib.png)
 
 这里根据需求选择payload类型，由于目标操作系统是64位的，所以选择payload类型为3，其他配置如下
 
-![pc_prep 2](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/pc_prep 2.png)
+![pc_prep 2](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/pc_prep 2.png)
 
-![pc_prep 2](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/pc_prep 3.png)
+![pc_prep 2](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/pc_prep 3.png)
 
 其中回调IP写攻击机IP地址，key使用default即可，完成以上步骤后就会成功在log目录中生成一个dll payload
 
-![pc_prep 2](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/pc_prep 4.png)
+![pc_prep 2](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/pc_prep 4.png)
 
 接下来类似于msf，我们需要在PeddleCheap中设置监听，需要注意使用default key，监听端口也使用默认即可
 
-![PeddleCheap](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/PeddleCheap.png)
+![PeddleCheap](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/PeddleCheap.png)
 
-![monitor](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/monitor.png)
+![monitor](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/monitor.png)
 
 端口监听成功
 
@@ -122,45 +122,45 @@ DoublePulsar的4个功能：
 - RunShellcode：注入shellcode
 - Uninstall:用于卸载系统上的后门 
 
-![dll injection](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/dll injection.png)
+![dll injection](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/dll injection.png)
 
 dll注入成功
 
-![dll injection success](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/dll injection success.png)
+![dll injection success](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/dll injection success.png)
 
 返回DanderSpritz查看监听情况，成功接受到来自靶机的连接请求，输入YES完成连接
 
-![connection](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/connection.png)
+![connection](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/connection.png)
 
 接着DanderSpritz会自动完成大量的靶机信息收集，包括硬件信息、操作系统信息、网络信息等等，也会尝试破解密码、收集靶机上的安全防护软件信息等，并会将这些收集到的信息保存至log文件中
 
-![Basic information](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/Basic information.png)
+![Basic information](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/Basic information.png)
 
 连接完成后，就可以使用DanderSpritz的各种插件了，例如文件管理、截屏、终端、编辑windows的事件日志、窃取靶机浏览器中的信息、usb监听等等
 
 新建插件：
 
-![plugin](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/plugin.png)
+![plugin](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/plugin.png)
 
 文件管理：
 
-![filesys](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/filesys.png)
+![filesys](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/filesys.png)
 
 OS Shell：
 
-![shell](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/shell.png)
+![shell](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/shell.png)
 
 屏幕截图：
 
-![screenshot](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/screenshot.png)
+![screenshot](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/screenshot.png)
 
 hashdump：
 
-![hashdump](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/hashdump.png)
+![hashdump](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/hashdump.png)
 
 其他的在console中输入help就可以查看所有的功能命令，攻击功能可使用aliases命令查看，剩下的功能呢就交给大家去挖掘了
 
-![aliases](http://reverse-tcp.xyz/static/img/_posts/FuzzBunch/aliases.png)
+![aliases](http://reverse-tcp.xyz/static/img/posts/FuzzBunch/aliases.png)
 
 -----
 

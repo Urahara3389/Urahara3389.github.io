@@ -425,11 +425,11 @@ header["Content-Type"]="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@D
 
 **批量检测POC执行效果**
 
-![s2-045-bd](http://reverse-tcp.xyz/static/img/_posts/s2-045-bd.png)
+![s2-045-bd](http://reverse-tcp.xyz/static/img/posts/s2-045-bd.png)
 
 **EXP执行效果**
 
-![s2-045-exp](http://reverse-tcp.xyz/static/img/_posts/s2-045-exp.png)
+![s2-045-exp](http://reverse-tcp.xyz/static/img/posts/s2-045-exp.png)
 
 注： 以上脚本适用于https站点
 
