@@ -5,6 +5,8 @@ date: 2018-05-10 13:43:02
 categories: [Pentest, Red Team]
 ---
 
+> 本文首发[逢魔安全实验室技术博客](https://blog.formsec.cn/2018/05/10/Some-Linux-Hacking-Tricks/)
+
 **There is always a method here is useful for you to penetration test  ：）**
 
 #### Some ways to read system files
