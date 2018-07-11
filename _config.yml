@@ -42,6 +42,8 @@ urls:
       url: /feed.xml
 
 friends:
+    - text: 逢魔安全实验室技术博客
+      url: "https://blog.formsec.cn"
     - text: 阿德马Web安全
       url: "http://www.nxadmin.com"
     - text: wooyaa的学习笔记
