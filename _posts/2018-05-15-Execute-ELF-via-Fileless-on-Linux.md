@@ -17,7 +17,7 @@ categories: [Pentest, Red Team]
 
 这里向大家介绍一个linux系统的底层调用函数*memfd_create(2)，*它在内核3.17中引入，会创建一个匿名文件并返回一个文件描述符指向它，该文件表现和常规文件类同， 可以进行修改，截断，内存映射等等，但不同的是，它存在于RAM当中。这就是可以被攻击者所利用的，如果有办法将需要执行elf通过*memfd_create(2)*写入内存中进行执行的话就可以达到我们的目的。
 
-![](http://reverse-tcp.xyz/static/img/posts/fileless-elf/l3ju6ct2aj.jpg)
+![](http://reverse-tcp.xyz/static/img/posts/fileless-elf/l3ju6ct2aj.png)
 
 对于该匿名文件的命名man信息中的解释如下：
 

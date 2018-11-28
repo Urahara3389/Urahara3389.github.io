@@ -4,7 +4,7 @@ description: "[root@Urahara ~]$ "
 author: Urahara's Blog
 github: https://github.com/Urahara3389
 keyword: "Urahara, fengliu, Infosec"
-about: Co-founder of FormSec, security researcher, bug hunter, pentester. Opinions are my own.
+about: NSFOCUS M01N RedTeam Member, Co-founder of FormSec, security researcher, bug hunter, Red Teamer, pentester. Opinions are my own.
 # disqus_shortname: stackproblems
 google_analytics: UA-90918419-1
 avatar_url: /static/img/Urahara.jpg
@@ -22,8 +22,8 @@ social:
       link: "https://weibo.com/Urahara3389"
     - icon: fa-twitter
       link: "https://twitter.com/Urahara3389"
-    - icon: fa-zhihu
-      link: "https://www.zhihu.com/people/urahara"
+    - icon: fa-slack
+      link: "https://join.slack.com/t/m01nsec/shared_invite/enQtNDMwMjIxNzA1MzQ0LWQ1MWNkM2U3ZGNkMTVmMjM2NzdlMDU2NDc4YTdjNjFjMjliYzlmNmI4ZGE0MGQ0N2YyZTZkMTRkZGVkZDBjMzY"
     - icon: fa-mail
       link: "fengliu@formsec.cn"
     - icon: fa-github
